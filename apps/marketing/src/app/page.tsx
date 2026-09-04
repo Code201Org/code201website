@@ -1,17 +1,17 @@
 import {
   BottomCta,
-  CaseStudies,
   Faq,
   FeatureGrid,
   FeatureSections,
   Hero,
+  HowItWorks,
   Integrations,
   Pricing,
   ProvenAtScale,
   RoiCalculator,
   Security,
-  Specialties,
-  SpecialtySwitcher,
+  Solutions,
+  SpecialtyPresets,
   Testimonials,
 } from "@/components/sections";
 
@@ -21,9 +21,9 @@ export default function HomePage() {
       <Hero />
       <ProvenAtScale />
       <FeatureSections />
-      <Specialties />
-      <SpecialtySwitcher />
-      <CaseStudies />
+      <HowItWorks />
+      <SpecialtyPresets />
+      <Solutions />
       <RoiCalculator />
       <FeatureGrid />
       <Integrations />

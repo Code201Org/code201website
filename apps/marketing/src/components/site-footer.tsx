@@ -3,21 +3,29 @@ import Link from "next/link";
 import { AppLogo } from "@/components/logo";
 
 const productLinks = [
-  "EHR & Charting",
-  "Scheduling",
-  "Medical Billing",
-  "Telehealth",
-  "Patient Portal",
-  "Analytics",
+  { label: "EHR & Charting", href: "/#features" },
+  { label: "Scheduling", href: "/#workflow" },
+  { label: "Medical Billing", href: "/#features" },
+  { label: "Telehealth", href: "/#features" },
+  { label: "Patient Portal", href: "/#features" },
+  { label: "Analytics", href: "/#roi-calculator" },
 ];
 
-const companyLinks = ["About", "Careers", "Blog", "Press", "Contact"];
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Blog", href: "/blog" },
+  { label: "Press", href: "/press" },
+  { label: "Contact", href: "/contact" },
+];
+
 const resourceLinks = [
-  "Help Center",
-  "API Documentation",
-  "Security",
-  "HIPAA Compliance",
-  "System Status",
+  { label: "Help Center", href: "/help-center" },
+  { label: "API Documentation", href: "/api-documentation" },
+  { label: "Security", href: "/security" },
+  { label: "HIPAA Compliance", href: "/security" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "System Status", href: "/system-status" },
 ];
 
 export function SiteFooter() {
@@ -59,20 +67,20 @@ function FooterColumn({
   links,
 }: {
   title: string;
-  links: string[];
+  links: { label: string; href: string }[];
 }) {
   return (
     <div>
       <p className="text-sm font-semibold text-foreground">{title}</p>
       <ul className="mt-4 space-y-2.5">
         {links.map((link) => (
-          <li key={link}>
-            <a
-              href="#"
+          <li key={link.label}>
+            <Link
+              href={link.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

@@ -33,10 +33,14 @@ import {
   Volume2,
 } from "lucide-react";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { Badge, Button, Card, CardContent } from "@repo/ui";
 
 import { LogoIcon } from "@/components/logo";
 import { EcgLine } from "@/components/pulse-mark";
+import { Reveal } from "@/components/reveal";
 
 // ---- Hero ----
 // Cursor/Devin-style: one massive sentence, two CTAs, large product visual —
@@ -157,10 +161,13 @@ function HeroCallVisual() {
     <div className="relative mx-auto max-w-5xl py-6 px-4 sm:px-12 md:px-20 lg:px-24">
       {/* Background Image Container */}
       <div className="relative h-[380px] sm:h-[460px] md:h-[500px] w-full sm:w-[82%] md:w-[78%] ml-auto overflow-hidden rounded-3xl border border-border/80 bg-card shadow-2xl">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80"
           alt="Patient on call with Code201 Concierge AI"
-          className="h-full w-full object-cover object-[center_20%]"
+          fill
+          priority
+          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 100vw"
+          className="object-cover object-[center_20%]"
         />
         {/* Soft Left Side Gradient Overlay for Dialogue Readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent pointer-events-none" />
@@ -251,20 +258,20 @@ export function ProvenAtScale() {
           Proven at scale
         </p>
 
-        <div className="mx-auto mt-5 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-6 lg:grid-cols-4">
-          {outcomes.map((outcome) => (
-            <div key={outcome.label} className="text-center">
+        <Reveal className="mx-auto mt-5 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-6 lg:grid-cols-4">
+          {outcomes.map((outcome, idx) => (
+            <Reveal key={outcome.label} delay={idx * 60} className="text-center">
               <p className="text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
                 {outcome.value}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
                 {outcome.label}
               </p>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-border pt-5">
+        <Reveal className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-border pt-5">
           {clinics.map((name) => (
             <span
               key={name}
@@ -274,7 +281,7 @@ export function ProvenAtScale() {
               {name}
             </span>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -295,35 +302,41 @@ function ScheduleVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
       <div className="relative h-36 w-full overflow-hidden">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
           alt="Clinical reception and schedule management"
-          className="h-full w-full object-cover"
+          fill
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
           <p className="text-sm font-semibold text-foreground">Bayview Family Health</p>
-          <Badge variant="info">Live Schedule</Badge>
+          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+            Live Schedule
+          </span>
         </div>
       </div>
       <div className="p-4 pt-1">
         <div className="space-y-2">
           {[
-            ["08:00", "Henry Fitzgerald", "Dr. Okafor · Rm 2", "Completed", "success"],
-            ["09:30", "Thomas Brennan", "R. Goldstein · Rm 6", "In Progress", "warning"],
-            ["10:00", "Marcus Washington", "Dr. Raghavan · Rm 3", "Checked In", "info"],
-            ["13:30", "Margaret Chen", "Dr. Okafor · Rm 2", "Scheduled", "secondary"],
-          ].map(([time, patient, provider, status, variant]) => (
+            ["08:00", "Henry Fitzgerald", "Dr. Okafor · Rm 2", "Completed"],
+            ["09:30", "Thomas Brennan", "R. Goldstein · Rm 6", "In Progress"],
+            ["10:00", "Marcus Washington", "Dr. Raghavan · Rm 3", "Checked In"],
+            ["13:30", "Margaret Chen", "Dr. Okafor · Rm 2", "Scheduled"],
+          ].map(([time, patient, provider, status]) => (
             <div
               key={patient as string}
               className="flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-2 text-xs"
             >
-              <span className="font-medium text-muted-foreground">{time}</span>
+              <span className="font-mono text-muted-foreground">{time}</span>
               <span className="min-w-0 flex-1 truncate font-medium text-foreground">
                 {patient}
                 <span className="font-normal text-muted-foreground"> · {provider}</span>
               </span>
-              <Badge variant={variant as never}>{status}</Badge>
+              <span className="rounded-md border border-border bg-muted/40 px-2 py-0.5 text-[11px] font-mono font-medium text-foreground">
+                {status}
+              </span>
             </div>
           ))}
         </div>
@@ -339,46 +352,54 @@ function BillingVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
       <div className="relative h-36 w-full overflow-hidden">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
           alt="Medical practice revenue cycle and billing management"
-          className="h-full w-full object-cover"
+          fill
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
           <p className="text-sm font-semibold text-foreground">Claim Pipeline</p>
-          <Badge variant="success">98.2% First-Pass Rate</Badge>
+          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+            98.2% First-Pass Rate
+          </span>
         </div>
       </div>
       <div className="p-4 pt-1">
         <div className="grid grid-cols-3 gap-2 text-center">
           {[
-            ["Submitted", "24", "info"],
-            ["Adjudicating", "9", "warning"],
-            ["Paid this week", "$18.4k", "success"],
-          ].map(([label, value, variant]) => (
+            ["Submitted", "24"],
+            ["Adjudicating", "9"],
+            ["Paid this week", "$18.4k"],
+          ].map(([label, value]) => (
             <div
               key={label as string}
               className="rounded-lg border border-border bg-background p-2"
             >
-              <Badge variant={variant as never}>{label}</Badge>
-              <p className="mt-1 text-base font-semibold">{value}</p>
+              <span className="rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-[10px] font-mono font-medium text-foreground">
+                {label}
+              </span>
+              <p className="mt-1 text-base font-semibold text-foreground">{value}</p>
             </div>
           ))}
         </div>
         <div className="mt-3 space-y-2">
           {[
-            ["CLM-00837", "99213", "Margaret Chen", "$195.00", "Paid", "success"],
-            ["CLM-00832", "99214", "Aisha Okafor", "$150.00", "Pending", "warning"],
-          ].map(([claim, cpt, patient, amount, status, variant]) => (
+            ["CLM-00837", "99213", "Margaret Chen", "$195.00", "Paid"],
+            ["CLM-00832", "99214", "Aisha Okafor", "$150.00", "Pending"],
+          ].map(([claim, cpt, patient, amount, status]) => (
             <div
               key={claim as string}
               className="flex items-center gap-2.5 rounded-lg border border-border bg-background px-3 py-2 text-xs"
             >
               <span className="font-mono text-muted-foreground">{cpt}</span>
-              <span className="min-w-0 flex-1 truncate font-medium">{patient}</span>
-              <span className="font-medium">{amount}</span>
-              <Badge variant={variant as never}>{status}</Badge>
+              <span className="min-w-0 flex-1 truncate font-medium text-foreground">{patient}</span>
+              <span className="font-mono font-medium text-foreground">{amount}</span>
+              <span className="rounded-md border border-border bg-muted/40 px-2 py-0.5 text-[11px] font-mono font-medium text-foreground">
+                {status}
+              </span>
             </div>
           ))}
         </div>
@@ -394,27 +415,31 @@ function ChartingVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
       <div className="relative h-36 w-full overflow-hidden">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=800&q=80"
           alt="Clinician creating SOAP charting note"
-          className="h-full w-full object-cover"
+          fill
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
           <p className="text-sm font-semibold text-foreground">Visit Note — Margaret Chen</p>
-          <Badge variant="success">Signed</Badge>
+          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+            Signed
+          </span>
         </div>
       </div>
       <div className="p-4 pt-1">
         <div className="space-y-2 rounded-lg border border-border bg-background p-3">
           <p className="text-xs text-foreground">
-            <span className="font-semibold text-accent">Subjective:</span> Improved exercise tolerance. No chest pain or shortness of breath.
+            <span className="font-mono font-semibold text-foreground">Subjective:</span> Improved exercise tolerance. No chest pain or shortness of breath.
           </p>
           <p className="text-xs text-foreground">
-            <span className="font-semibold text-accent">Assessment:</span> Atrial fibrillation (I48.91), rate-controlled. Hypertension (I10).
+            <span className="font-mono font-semibold text-foreground">Assessment:</span> Atrial fibrillation (I48.91), rate-controlled. Hypertension (I10).
           </p>
-          <div className="flex items-center gap-2 rounded bg-muted/60 px-2.5 py-1.5 text-xs">
-            <Pill className="h-3.5 w-3.5 shrink-0 text-accent" />
+          <div className="flex items-center gap-2 rounded border border-border bg-muted/40 px-2.5 py-1.5 text-xs">
+            <Pill className="h-3.5 w-3.5 shrink-0 text-foreground" />
             <span className="text-muted-foreground"><strong className="text-foreground">Rx:</strong> Metformin 500 mg PO BID sent to pharmacy</span>
           </div>
         </div>
@@ -428,7 +453,7 @@ const featureSections: FeatureSection[] = [
     eyebrow: "Command center",
     title: (
       <>
-        One schedule for <span className="text-accent">the whole clinic</span>
+        One schedule for <span className="font-semibold text-foreground">the whole clinic</span>
       </>
     ),
     paragraphs: [
@@ -446,7 +471,7 @@ const featureSections: FeatureSection[] = [
     eyebrow: "Revenue cycle",
     title: (
       <>
-        Billing that <span className="text-accent">closes itself out</span>
+        Billing that <span className="font-semibold text-foreground">closes itself out</span>
       </>
     ),
     paragraphs: [
@@ -466,7 +491,7 @@ const featureSections: FeatureSection[] = [
     title: (
       <>
         Notes at the speed of{" "}
-        <span className="text-accent">the conversation</span>
+        <span className="font-semibold text-foreground">the conversation</span>
       </>
     ),
     paragraphs: [
@@ -498,8 +523,10 @@ function FeatureSectionBlock({
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-12 sm:gap-16 lg:grid-cols-2 lg:gap-20">
-          <div className={flip ? "lg:order-2" : undefined}>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <Reveal
+            className={flip ? "lg:order-2" : undefined}
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               {eyebrow}
             </p>
             <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
@@ -520,14 +547,16 @@ function FeatureSectionBlock({
                     key={point}
                     className="flex items-center gap-2.5 text-sm text-foreground"
                   >
-                    <CircleCheck className="h-4 w-4 shrink-0 text-accent" />
+                    <CircleCheck className="h-4 w-4 shrink-0 text-foreground" />
                     {point}
                   </li>
                 ))}
               </ul>
             ) : null}
-          </div>
-          <div className={flip ? "lg:order-1" : undefined}>{visual}</div>
+          </Reveal>
+          <Reveal className={flip ? "lg:order-1" : undefined} delay={100}>
+            {visual}
+          </Reveal>
         </div>
       </div>
     </section>
@@ -595,7 +624,7 @@ const workflowSteps = [
   },
 ];
 
-export function Specialties() {
+export function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -727,7 +756,7 @@ export function Specialties() {
 
 // ---- Platform Solutions (Strict Monochrome Asymmetric Tiled Grid) ----
 
-export function CaseStudies() {
+export function Solutions() {
   return (
     <section id="solutions" className="border-b border-border bg-background py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -923,18 +952,20 @@ export function FeatureGrid() {
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {moreFeatures.map(({ icon: Icon, title, description }) => (
-            <Card key={title} className="transition-colors hover:bg-muted/40">
-              <CardContent className="p-5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-button bg-accent/10 text-accent">
-                  <Icon className="h-4.5 w-4.5" />
-                </span>
-                <h3 className="mt-3 font-semibold">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {description}
-                </p>
-              </CardContent>
-            </Card>
+          {moreFeatures.map(({ icon: Icon, title, description }, idx) => (
+            <Reveal key={title} delay={(idx % 3) * 70}>
+              <Card className="h-full transition-colors hover:bg-muted/40">
+                <CardContent className="p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-button bg-accent/10 text-accent">
+                    <Icon className="h-4.5 w-4.5" />
+                  </span>
+                  <h3 className="mt-3 font-semibold">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {description}
+                  </p>
+                </CardContent>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -957,7 +988,7 @@ export function Integrations() {
   return (
     <section className="border-t border-border bg-background py-10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <Reveal className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-md">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               Integrations
@@ -980,7 +1011,7 @@ export function Integrations() {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -1038,7 +1069,7 @@ export function Testimonials() {
         {/* 3-Column Grid Layout */}
         <div className="grid gap-8 lg:grid-cols-3 items-stretch">
           {/* Left Column: Summary & Rating Trust Badge */}
-          <div className="flex flex-col justify-between space-y-8 pr-2">
+          <Reveal className="flex flex-col justify-between space-y-8 pr-2">
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               Clinical teams trust Code201 because we treat their practice workflow like our own. We focus on clinical outcomes, reducing administrative burden so providers can focus on care.
             </p>
@@ -1062,12 +1093,13 @@ export function Testimonials() {
                 120+ VERIFIED CLINICAL REVIEWS
               </p>
             </div>
-          </div>
+          </Reveal>
 
           {/* Middle & Right Columns: Testimonial Cards */}
-          {clientTestimonials.map((t) => (
-            <div
+          {clientTestimonials.map((t, idx) => (
+            <Reveal
               key={t.name}
+              delay={idx * 90}
               className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-all hover:border-accent/40"
             >
               <div>
@@ -1084,9 +1116,11 @@ export function Testimonials() {
                 {/* Author Info & Clinic Badge */}
                 <div className="mt-8 flex items-end justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <img
+                    <Image
                       src={t.avatar}
                       alt={t.name}
+                      width={88}
+                      height={88}
                       className="h-11 w-11 rounded-full object-cover border border-border"
                     />
                     <div>
@@ -1108,13 +1142,15 @@ export function Testimonials() {
                   <span>{t.rating}</span>
                   <Star className="h-3.5 w-3.5 fill-accent text-accent" />
                 </div>
-                <div className="flex items-center gap-3 font-medium text-accent">
-                  <a href="#pricing" className="hover:underline">Full text</a>
-                  <span>·</span>
-                  <a href="#features" className="hover:underline">Case study</a>
-                </div>
+                <Link
+                  href="/case-studies"
+                  className="flex items-center gap-1.5 font-medium text-accent hover:underline"
+                >
+                  Read case study
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -1191,14 +1227,16 @@ export function Security() {
     >
       {/* Cover image shown as background, transition to opaque background dynamically on scroll */}
       <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=2400&q=80"
           alt="Clinical security infrastructure"
+          fill
+          sizes="100vw"
           style={{
             opacity: imageOpacity,
             transform: `scale(${1 + overlayProgress * 0.04})`,
           }}
-          className="h-full w-full object-cover object-[center_35%] sm:object-center transition-all duration-500 ease-out"
+          className="object-cover object-[center_35%] sm:object-center transition-all duration-500 ease-out"
         />
         {/* Subtle mobile backdrop gradient to guarantee crisp text contrast on small viewports */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/90 sm:hidden" />
@@ -1360,9 +1398,9 @@ export function Pricing() {
         </div>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {tiers.map((tier) => (
+          {tiers.map((tier, idx) => (
+            <Reveal key={tier.name} delay={idx * 80}>
             <Card
-              key={tier.name}
               className={
                 tier.highlighted
                   ? "relative border-foreground shadow-lg ring-1 ring-foreground"
@@ -1406,6 +1444,7 @@ export function Pricing() {
                 </Button>
               </CardContent>
             </Card>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -1451,6 +1490,21 @@ export function Faq() {
 
   return (
     <section id="faq" className="border-b border-border bg-background py-14 sm:py-20">
+      {/* FAQ structured data for search-engine rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: { "@type": "Answer", text: faq.a },
+            })),
+          }),
+        }}
+      />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
@@ -1516,10 +1570,12 @@ export function BottomCta() {
   return (
     <section className="relative overflow-hidden border-t border-border bg-background py-16 lg:py-20">
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2000&q=80"
           alt="Clinical team background"
-          className="h-full w-full object-cover object-center opacity-10 blur-[1px]"
+          fill
+          sizes="100vw"
+          className="object-cover object-center opacity-10 blur-[1px]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background" />
       </div>
@@ -1697,7 +1753,7 @@ const specialtyData = [
   },
 ];
 
-export function SpecialtySwitcher() {
+export function SpecialtyPresets() {
   const [activeSpecialtyId, setActiveSpecialtyId] = useState("cardiology");
   const activeData = specialtyData.find((s) => s.id === activeSpecialtyId) || specialtyData[0]!;
 
@@ -1735,7 +1791,7 @@ export function SpecialtySwitcher() {
         </div>
 
         {/* Active Content Card */}
-        <div className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
+        <Reveal className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
           <h3 className="text-2xl font-medium text-foreground tracking-tight sm:text-3xl">
             {activeData.title}
           </h3>
@@ -1750,7 +1806,7 @@ export function SpecialtySwitcher() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
