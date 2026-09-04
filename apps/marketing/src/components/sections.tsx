@@ -4,24 +4,38 @@ import { useEffect, useRef, useState } from "react";
 import {
   Activity,
   ArrowRight,
+  Building2,
   CalendarCheck,
   Check,
   CircleCheck,
+  Clock,
+  DollarSign,
   FileCheck2,
   FileHeart,
   KeyRound,
+  MessageSquareText,
   NotebookPen,
+  Pause,
+  PhoneCall,
   Pill,
+  Play,
+  Plus,
+  Quote,
   RefreshCw,
+  Search,
   ShieldCheck,
+  Sliders,
   Sparkles,
+  Star,
   Stethoscope,
   UserRound,
   Video,
+  Volume2,
 } from "lucide-react";
 
 import { Badge, Button, Card, CardContent } from "@repo/ui";
 
+import { LogoIcon } from "@/components/logo";
 import { EcgLine } from "@/components/pulse-mark";
 
 // ---- Hero ----
@@ -33,15 +47,35 @@ export function Hero() {
     <section className="relative flex w-full flex-col bg-background">
       {/* Full window width & 100% full viewport height landing hero banner */}
       <div className="relative flex min-h-[calc(100vh-4rem)] min-h-[calc(100svh-4rem)] w-full flex-col justify-center overflow-hidden border-b border-border">
-        {/* Full-bleed background clinical banner image */}
-        <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Modern clinic environment background"
-            loading="eager"
-            className="h-full w-full object-cover object-center opacity-65 dark:opacity-75"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+        {/* Full-bleed background texture pattern */}
+        <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          {/* Ambient radial glow highlights */}
+          <div className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[600px] rounded-full bg-accent/15 blur-[120px] dark:bg-accent/20" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[450px] rounded-full bg-primary/5 blur-[90px] dark:bg-primary/10" />
+
+          {/* SVG Dot & Line Texture Pattern */}
+          <svg
+            className="absolute inset-0 h-full w-full stroke-foreground/10 text-foreground/20 [mask-image:radial-gradient(100%_100%_at_top_center,white_30%,transparent_90%)]"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="hero-grid-pattern"
+                width="32"
+                height="32"
+                x="50%"
+                y="-1"
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M.5 32V.5H32" fill="none" strokeWidth="0.5" strokeOpacity="0.3" />
+                <circle cx="16" cy="16" r="1.2" fill="currentColor" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" strokeWidth="0" fill="url(#hero-grid-pattern)" />
+          </svg>
+
+          {/* Bottom subtle fade into the next section */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </div>
 
         {/* Fills the entire viewport on load: headline, CTAs, trust chips */}
@@ -75,7 +109,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Product visual area: clean normal background without image */}
+      {/* Product visual area */}
       <div className="relative w-full border-b border-border bg-muted/40 py-12 sm:py-16">
         <EcgLine className="mx-auto mb-8 h-10 w-full max-w-5xl px-4 text-accent/50 sm:px-6" />
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -531,50 +565,176 @@ export function FeatureSections() {
   );
 }
 
-// ---- Specialties ----
+// ---- Patient Call Workflow Scroll Timeline Stepper ----
 
-const specialties = [
-  "Family Medicine",
-  "Internal Medicine",
-  "Pediatrics",
-  "Cardiology",
-  "Orthopedics",
-  "OB/GYN",
-  "Dermatology",
-  "Behavioral Health",
-  "Endocrinology",
-  "Gastroenterology",
-  "Urgent Care",
-  "Telehealth",
+const workflowSteps = [
+  {
+    step: "Step 1",
+    title: "Call Answered, Instantly.",
+    description:
+      "The Concierge agent answers the patient’s call immediately to help the patient schedule an appointment.",
+    icon: PhoneCall,
+  },
+  {
+    step: "Step 2",
+    title: "Patient Information Captured.",
+    description:
+      "The agent asks the right questions to capture necessary patient information, pulls up their chart, and writes new information directly into the EHR.",
+    icon: Search,
+  },
+  {
+    step: "Step 3",
+    title: "Request Detected & Understood.",
+    description:
+      "The agent identifies the request to schedule an appointment and refill a prescription, and prepares to handle both in a single conversation.",
+    icon: Sparkles,
+  },
+  {
+    step: "Step 4",
+    title: "Appointment Booked.",
+    description:
+      "Concierge checks real-time availability, applies specialty-specific scheduling logic and provider rules, and books the appointment directly in the EHR.",
+    icon: CalendarCheck,
+  },
+  {
+    step: "Step 5",
+    title: "Prescription Refill Submitted",
+    description:
+      "The agent generates an EHR-native task for the provider to review and action the prescription refill. No staff involvement required.",
+    icon: Pill,
+  },
+  {
+    step: "Step 6",
+    title: "Appointment Confirmed, Loop Closed.",
+    description:
+      "The patient receives an immediate text confirmation for the appointment. The refill task is queued in the EHR, and ready for the team to action.",
+    icon: MessageSquareText,
+  },
 ];
 
 export function Specialties() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Center point calculation: timeline progress as center of screen moves through timeline
+      const centerPos = windowHeight / 2 - rect.top;
+      const totalDist = rect.height;
+
+      const rawProgress = totalDist > 0 ? centerPos / totalDist : 0;
+      const progress = Math.max(0, Math.min(1, rawProgress));
+
+      setScrollProgress(progress);
+
+      const stepIdx = Math.min(
+        workflowSteps.length - 1,
+        Math.max(0, Math.floor(progress * workflowSteps.length))
+      );
+      setActiveStep(stepIdx);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="border-b border-border bg-muted/40 py-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-              Specialty depth
-            </p>
-            <h2 className="mt-2 text-balance text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-              Built for 40+ specialties — from day one
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Templated workflows, order sets, and code presets tuned to how
-              each specialty actually practices.
-            </p>
+    <section
+      ref={containerRef}
+      className="relative border-b border-border bg-background py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/70">
+            HOW IT WORKS
+          </p>
+          <h2 className="mt-3 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Here's What Happens When Patients Call into Your Practice.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg">
+            One call. Multiple needs. No hold time. No staff required. See how
+            Code201's Concierge AI agent handles the full interaction from first
+            ring to EHR sync.
+          </p>
+        </div>
+
+        {/* Vertical Timeline Stepper Container */}
+        <div
+          ref={timelineRef}
+          className="relative mt-16 sm:mt-24 flex gap-6 sm:gap-12 md:gap-16"
+        >
+          {/* Sticky Left Line & Indicator Column */}
+          <div className="relative flex flex-col items-center w-10 sm:w-12">
+            {/* Background Line Track */}
+            <div className="absolute top-0 bottom-0 w-0.5 bg-border/60" />
+
+            {/* Filled Animated Scroll Line */}
+            <div
+              className="absolute top-0 w-0.5 bg-foreground rounded-full transition-all duration-75 ease-out"
+              style={{ height: `${scrollProgress * 100}%` }}
+            />
+
+            {/* Sticky Center-Viewport Floating Indicator Node (Zero Lag) */}
+            <div className="sticky top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-foreground text-background shadow-xl ring-4 ring-background">
+              <LogoIcon unstyled className="h-5 w-5 text-background" />
+            </div>
           </div>
-          <div className="flex max-w-2xl flex-wrap gap-2 lg:justify-end">
-            {specialties.map((specialty) => (
-              <span
-                key={specialty}
-                className="inline-flex items-center gap-1.5 rounded-button border border-border bg-card px-3 py-1.5 text-sm text-foreground"
-              >
-                <Stethoscope className="h-3.5 w-3.5 text-accent" />
-                {specialty}
-              </span>
-            ))}
+
+          {/* Steps Content List */}
+          <div className="flex-1 space-y-16 sm:space-y-24 py-12">
+            {workflowSteps.map((step, idx) => {
+              const Icon = step.icon;
+              const isActive = idx <= activeStep;
+              const isCurrent = idx === activeStep;
+
+              return (
+                <div
+                  key={step.step}
+                  className={`group relative flex flex-col items-start gap-3 transition-all duration-500 ${
+                    isCurrent
+                      ? "opacity-100 scale-[1.02] translate-x-0"
+                      : isActive
+                      ? "opacity-80 translate-x-0"
+                      : "opacity-35 translate-x-1"
+                  }`}
+                >
+                  {/* Black & White Monochrome Step Icon Box */}
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-300 ${
+                      isCurrent
+                        ? "border-foreground bg-foreground text-background shadow-md scale-105"
+                        : isActive
+                        ? "border-border bg-card text-foreground shadow-sm"
+                        : "border-border/60 bg-muted/40 text-muted-foreground"
+                    }`}
+                  >
+                    <Icon className="h-6 w-6" />
+                  </div>
+
+                  {/* Step Text Block */}
+                  <div>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/70">
+                      {step.step}
+                    </span>
+                    <h3 className="mt-1 text-xl font-medium tracking-tight text-foreground sm:text-2xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 max-w-xl text-base text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -784,74 +944,133 @@ export function Integrations() {
 
 // ---- Testimonials: one big pull quote + supporting cards ----
 
-const heroQuote = {
-  quote:
-    "We went from three disconnected systems to one. Our front desk closes the books 90 minutes earlier every day, and claim denials have dropped noticeably.",
-  name: "Dr. Amara Osei, MD",
-  title: "Medical Director, Bayview Family Health",
-  avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80",
-};
+// ---- Testimonials: 3-column client layout with left rating badge & quote cards ----
 
-const quotes = [
+const clientTestimonials = [
   {
     quote:
-      "No-shows are down about 40% since we switched. The scheduling and reminder flows alone paid for the subscription.",
-    name: "Dr. Luis Herrera, DO",
-    title: "Owner, Herrera Pediatrics",
-    avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80",
+      "We went from three disconnected systems to one. Our front desk closes the books 90 minutes earlier every day, and claim denials have dropped noticeably.",
+    name: "Dr. Amara Osei, MD",
+    title: "Medical Director",
+    clinic: "Bayview Family Health",
+    avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80",
+    rating: "5.0",
+    clinicLogo: "BAYVIEW HEALTH",
   },
   {
     quote:
-      "Charting used to follow me home every night. Now I'm done before I leave the exam room.",
-    name: "Dr. Hannah Weiss, MD",
-    title: "Internist, Presidio Internal Medicine",
-    avatar: "https://images.unsplash.com/photo-1594824813572-c288d40733a1?auto=format&fit=crop&w=200&q=80",
+      "No-shows are down about 40% since we switched. The scheduling and automated reminder flows alone paid for our subscription.",
+    name: "Dr. Luis Herrera, DO",
+    title: "Owner & Lead Physician",
+    clinic: "Herrera Pediatrics",
+    avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80",
+    rating: "5.0",
+    clinicLogo: "HERRERA PEDIATRICS",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section id="customers" className="bg-background py-14 lg:py-16">
+    <section id="customers" className="border-b border-border bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <figure className="mx-auto max-w-3xl text-center">
-          <div className="mx-auto mb-4 h-16 w-16 overflow-hidden rounded-full border-2 border-accent/40 shadow-sm">
-            <img
-              src={heroQuote.avatar}
-              alt={heroQuote.name}
-              className="h-full w-full object-cover"
-            />
+        {/* Top Header Row */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-12 sm:mb-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              TESTIMONIALS
+            </p>
+            <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              What our clients say
+            </h2>
           </div>
-          <blockquote className="text-balance text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
-            &ldquo;{heroQuote.quote}&rdquo;
-          </blockquote>
-          <figcaption className="mt-4 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">
-              {heroQuote.name}
-            </span>{" "}
-            · {heroQuote.title}
-          </figcaption>
-        </figure>
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-1 text-sm font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+          >
+            All testimonials (61)
+          </a>
+        </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {quotes.map((t) => (
-            <Card key={t.name} className="transition-all hover:border-accent/40">
-              <CardContent className="p-6">
-                <p className="text-sm leading-relaxed text-foreground">
+        {/* 3-Column Grid Layout */}
+        <div className="grid gap-8 lg:grid-cols-3 items-stretch">
+          {/* Left Column: Summary & Rating Trust Badge */}
+          <div className="flex flex-col justify-between space-y-8 pr-2">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Clinical teams trust Code201 because we treat their practice workflow like our own. We focus on clinical outcomes, reducing administrative burden so providers can focus on care.
+            </p>
+
+            {/* Rating trust badge */}
+            <div className="pt-6 border-t border-border/60">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                REVIEWED ON
+              </p>
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-xl font-bold text-foreground">5.0</span>
+                <div className="flex items-center text-accent">
+                  <Star className="h-4 w-4 fill-accent text-accent" />
+                  <Star className="h-4 w-4 fill-accent text-accent" />
+                  <Star className="h-4 w-4 fill-accent text-accent" />
+                  <Star className="h-4 w-4 fill-accent text-accent" />
+                  <Star className="h-4 w-4 fill-accent text-accent" />
+                </div>
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">
+                120+ VERIFIED CLINICAL REVIEWS
+              </p>
+            </div>
+          </div>
+
+          {/* Middle & Right Columns: Testimonial Cards */}
+          {clientTestimonials.map((t) => (
+            <div
+              key={t.name}
+              className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-all hover:border-accent/40"
+            >
+              <div>
+                {/* Red/Accent Quote Mark Icon */}
+                <div className="mb-4 text-accent">
+                  <Quote className="h-8 w-8 fill-accent/15 stroke-accent" />
+                </div>
+
+                {/* Quote Text */}
+                <p className="text-base leading-relaxed text-foreground/90">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <div className="mt-5 flex items-center gap-3">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    className="h-10 w-10 rounded-full object-cover border border-border"
-                  />
-                  <div>
-                    <p className="text-sm font-semibold">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.title}</p>
+
+                {/* Author Info & Clinic Badge */}
+                <div className="mt-8 flex items-end justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      className="h-11 w-11 rounded-full object-cover border border-border"
+                    />
+                    <div>
+                      <p className="text-base font-semibold text-foreground">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {t.title}, {t.clinic}
+                      </p>
+                    </div>
                   </div>
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/80 border border-border/80 rounded px-2 py-0.5">
+                    {t.clinicLogo}
+                  </span>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              {/* Bottom Footer inside Card */}
+              <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-xs">
+                <div className="flex items-center gap-1 font-semibold text-foreground">
+                  <span>{t.rating}</span>
+                  <Star className="h-3.5 w-3.5 fill-accent text-accent" />
+                </div>
+                <div className="flex items-center gap-3 font-medium text-accent">
+                  <a href="#pricing" className="hover:underline">Full text</a>
+                  <span>·</span>
+                  <a href="#features" className="hover:underline">Case study</a>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -924,10 +1143,10 @@ export function Security() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[90vh] flex-col justify-center overflow-hidden border-b border-t border-border py-28 lg:py-36"
+      className="relative flex min-h-0 sm:min-h-[90vh] flex-col justify-center overflow-hidden border-b border-t border-border py-16 sm:py-28 lg:py-36"
     >
       {/* Cover image shown as background, transition to opaque background dynamically on scroll */}
-      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <img
           src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=2400&q=80"
           alt="Clinical security infrastructure"
@@ -935,8 +1154,10 @@ export function Security() {
             opacity: imageOpacity,
             transform: `scale(${1 + overlayProgress * 0.04})`,
           }}
-          className="h-full w-full object-cover object-center transition-all duration-500 ease-out"
+          className="h-full w-full object-cover object-[center_35%] sm:object-center transition-all duration-500 ease-out"
         />
+        {/* Subtle mobile backdrop gradient to guarantee crisp text contrast on small viewports */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/90 sm:hidden" />
         {/* Opaque background transition layer */}
         <div
           style={{ opacity: overlayOpacity }}
@@ -947,7 +1168,7 @@ export function Security() {
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <div
           style={{
-            opacity: Math.min(1, overlayProgress * 2.5),
+            opacity: Math.min(1, Math.max(0.35, overlayProgress * 2.5)),
             transform: `translateY(${
               (1 - Math.min(1, overlayProgress * 2.5)) * 28
             }px)`,
@@ -1174,31 +1395,71 @@ const faqs = [
 ];
 
 export function Faq() {
+  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+
+  const toggle = (index: number) => {
+    setOpenIndexes((prev) =>
+      prev.includes(index)
+        ? prev.filter((i) => i !== index)
+        : [...prev, index]
+    );
+  };
+
   return (
-    <section id="faq" className="bg-background py-12 lg:py-16">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <div className="text-center">
+    <section id="faq" className="border-b border-border bg-background py-14 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Header */}
+        <div className="mb-8 sm:mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             FAQ
           </p>
-          <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-2 text-balance text-2xl font-medium tracking-tight text-foreground sm:text-3xl lg:text-4xl">
             Frequently asked questions
           </h2>
         </div>
-        <div className="mt-8 divide-y divide-border rounded-xl border border-border">
-          {faqs.map((faq) => (
-            <details key={faq.q} className="group px-6 py-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-foreground">
-                {faq.q}
-                <span className="text-muted-foreground transition-transform group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
-                {faq.a}
-              </p>
-            </details>
-          ))}
+
+        {/* Accordion List with Horizontal Rule Dividers */}
+        <div className="border-t border-border divide-y divide-border">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndexes.includes(idx);
+
+            return (
+              <div key={faq.q} className="py-4 sm:py-5 transition-colors">
+                <button
+                  type="button"
+                  onClick={() => toggle(idx)}
+                  className="flex w-full items-start gap-3 sm:gap-4 text-left group focus:outline-none"
+                  aria-expanded={isOpen}
+                >
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-foreground transition-transform duration-300">
+                    <Plus
+                      className={`h-4 w-4 stroke-[2] transition-transform duration-300 ${
+                        isOpen ? "rotate-45 text-accent" : "text-foreground group-hover:text-accent"
+                      }`}
+                    />
+                  </span>
+                  <span className="flex-1 text-base font-medium text-foreground sm:text-lg group-hover:text-accent/90 transition-colors">
+                    {faq.q}
+                  </span>
+                </button>
+
+                {/* Smooth Animated Height Dropdown */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100 mt-3 sm:mt-4"
+                      : "grid-rows-[0fr] opacity-0 mt-0"
+                  }`}
+                >
+                  <div className="overflow-hidden pl-8 sm:pl-9">
+                    <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -1237,6 +1498,214 @@ export function BottomCta() {
               <ArrowRight />
             </Button>
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---- Practice ROI Calculator ----
+
+export function RoiCalculator() {
+  const [providers, setProviders] = useState(5);
+  const [dailyCalls, setDailyCalls] = useState(150);
+
+  // Calculations
+  const hoursSavedPerMonth = Math.round((dailyCalls * 0.45 * 30) / 60);
+  const revenueRecovered = Math.round(providers * dailyCalls * 18);
+  const holdTimeReduction = 89;
+
+  return (
+    <section id="roi-calculator" className="border-b border-border bg-background py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            PRACTICE ROI CALCULATOR
+          </p>
+          <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Calculate your clinic's monthly staff & time savings
+          </h2>
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
+            See how much front-desk capacity and recovered appointment revenue Code201 brings to your practice.
+          </p>
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-2 items-center rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm">
+          {/* Controls */}
+          <div className="space-y-8">
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <label className="text-sm font-semibold text-foreground flex items-center gap-2">
+                  <UserRound className="h-4 w-4 text-accent" />
+                  Number of Providers
+                </label>
+                <span className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button">
+                  {providers} {providers === 1 ? "Provider" : "Providers"}
+                </span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="50"
+                value={providers}
+                onChange={(e) => setProviders(Number(e.target.value))}
+                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <label className="text-sm font-semibold text-foreground flex items-center gap-2">
+                  <PhoneCall className="h-4 w-4 text-accent" />
+                  Daily Inbound Patient Calls
+                </label>
+                <span className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button">
+                  {dailyCalls} Calls/day
+                </span>
+              </div>
+              <input
+                type="range"
+                min="25"
+                max="1000"
+                step="25"
+                value={dailyCalls}
+                onChange={(e) => setDailyCalls(Number(e.target.value))}
+                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent"
+              />
+            </div>
+          </div>
+
+          {/* Results Display */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 bg-muted/40 p-6 rounded-xl border border-border/80">
+            <div className="flex items-center justify-between border-b border-border/60 pb-4">
+              <div className="flex items-center gap-3">
+                <Clock className="h-5 w-5 text-accent" />
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase">Staff Hours Saved</p>
+                  <p className="text-2xl font-bold text-foreground">{hoursSavedPerMonth} hrs/mo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between border-b border-border/60 pb-4">
+              <div className="flex items-center gap-3">
+                <Activity className="h-5 w-5 text-emerald-500" />
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase">Hold Time Reduction</p>
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">-{holdTimeReduction}%</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-1">
+              <div className="flex items-center gap-3">
+                <DollarSign className="h-5 w-5 text-accent" />
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase">Estimated Monthly Revenue Recovered</p>
+                  <p className="text-2xl font-bold text-foreground">${revenueRecovered.toLocaleString()}/mo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---- Specialty Switcher Tabbed Module ----
+
+const specialtyData = [
+  {
+    id: "cardiology",
+    label: "Cardiology",
+    title: "Cardiology Triage & Test Ordering",
+    description: "Automate EKG, Holter monitor, and echo appointment scheduling with specific pre-test preparation instructions.",
+    features: ["Holter & Echo prep protocols", "Urgent chest pain triage routing", "Prior auth document collection"],
+  },
+  {
+    id: "orthopedics",
+    label: "Orthopedics",
+    title: "Orthopedic Injury Intake & MRI Prep",
+    description: "Routes joint-specific referrals directly to subspecialist schedules (Sports, Spine, Hand, Foot/Ankle).",
+    features: ["Sub-specialty provider matching", "X-Ray/MRI authorization intake", "Post-op wound check scheduling"],
+  },
+  {
+    id: "dermatology",
+    label: "Dermatology",
+    title: "Biopsy & Cosmetic Appointment Logic",
+    description: "Differentiates medical dermatology urgent lesion checks from routine cosmetic consultations.",
+    features: ["Lesion urgency screening", "Biopsy result callback tasks", "Cosmetic vs Medical scheduling"],
+  },
+  {
+    id: "pediatrics",
+    label: "Pediatrics",
+    title: "Pediatric Vaccine & Sick Visit Rules",
+    description: "Schedules well-child checkups matched to immunization schedules and same-day sick visits.",
+    features: ["Age-based well visit intervals", "Parent guardian verification", "Same-day fever & sick triage"],
+  },
+  {
+    id: "obgyn",
+    label: "OB/GYN",
+    title: "Prenatal & Gynecological Scheduling",
+    description: "Handles gestational week milestone scheduling and annual preventive exam booking automatically.",
+    features: ["Gestational milestone tracking", "Pap & Mammography recalls", "Urgent OB triage protocols"],
+  },
+];
+
+export function SpecialtySwitcher() {
+  const [activeSpecialtyId, setActiveSpecialtyId] = useState("cardiology");
+  const activeData = specialtyData.find((s) => s.id === activeSpecialtyId) || specialtyData[0]!;
+
+  return (
+    <section id="specialty-depth" className="border-b border-border bg-background py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            SPECIALTY PRESETS
+          </p>
+          <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Tuned to how your specialty actually practices
+          </h2>
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
+            Pre-built intake rules, appointment duration logic, and triage protocols for 40+ specialties.
+          </p>
+        </div>
+
+        {/* Tab Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {specialtyData.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => setActiveSpecialtyId(s.id)}
+              className={`rounded-button px-4 py-2 text-sm font-medium transition-all ${
+                activeSpecialtyId === s.id
+                  ? "bg-foreground text-background shadow-sm"
+                  : "bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground"
+              }`}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Active Content Card */}
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
+          <h3 className="text-2xl font-medium text-foreground tracking-tight sm:text-3xl">
+            {activeData.title}
+          </h3>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {activeData.description}
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {activeData.features.map((feat) => (
+              <div key={feat} className="flex items-center gap-2 text-sm font-medium text-foreground bg-muted/40 p-3 rounded-xl border border-border/60">
+                <Check className="h-4 w-4 text-accent shrink-0" />
+                <span>{feat}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { PulseMark } from "@/components/pulse-mark";
+import { AppLogo } from "@/components/logo";
 
 const productLinks = [
   "EHR & Charting",
@@ -26,11 +26,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5">
-              <PulseMark />
-              <span className="text-lg font-semibold tracking-tight">
-                Code201
-              </span>
+            <Link href="/">
+              <AppLogo textSize="text-lg" />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               The all-in-one clinical platform for independent practices —

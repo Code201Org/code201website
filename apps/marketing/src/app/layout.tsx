@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Code201 — EHR, Practice Management & Billing for Modern Clinics",
   description:
     "Code201 unifies charting, scheduling, telehealth, and medical billing in one HIPAA-compliant platform for independent practices and clinics.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -7,8 +7,10 @@ import {
   Integrations,
   Pricing,
   ProvenAtScale,
+  RoiCalculator,
   Security,
   Specialties,
+  SpecialtySwitcher,
   StatsBand,
   Testimonials,
   Workflow,
@@ -21,8 +23,10 @@ export default function HomePage() {
       <ProvenAtScale />
       <FeatureSections />
       <Specialties />
+      <SpecialtySwitcher />
       <StatsBand />
       <Workflow />
+      <RoiCalculator />
       <FeatureGrid />
       <Integrations />
       <Testimonials />
