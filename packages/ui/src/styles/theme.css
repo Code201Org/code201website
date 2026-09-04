@@ -1,0 +1,115 @@
+/*
+ * Code201 theme tokens.
+ *
+ * Two themes, one clinical-monochrome system:
+ *
+ * - Light (default): modeled on the Devin site palette — warm paper
+ *   background, white cards with hairline borders, near-black inverted
+ *   buttons with square corners, sparing blue accent.
+ * - Dark: modeled on the Cursor site palette — warm near-black background,
+ *   lifted card surfaces, off-white inverted pill buttons, monochrome with
+ *   a soft blue accent.
+ *
+ * Both apps import this file right after `@import "tailwindcss"`.
+ */
+
+:root {
+  --background: #f7f6f5;
+  --foreground: #191919;
+
+  --card: #ffffff;
+  --card-foreground: #191919;
+
+  --primary: #191919;
+  --primary-foreground: #ffffff;
+
+  --secondary: #eceae8;
+  --secondary-foreground: #191919;
+
+  --muted: #eceae8;
+  --muted-foreground: rgba(25, 25, 25, 0.56);
+
+  --accent: #3291ff;
+  --accent-foreground: #ffffff;
+
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.14);
+  --ring: rgba(25, 25, 25, 0.4);
+
+  --success: #dcf2e4;
+  --success-foreground: #1a7f4b;
+  --warning: #f6ecd4;
+  --warning-foreground: #8a6116;
+  --danger: #fbe4e4;
+  --danger-foreground: #b02a2a;
+  --info: #e3edfd;
+  --info-foreground: #1c64c8;
+
+  /* Devin uses crisp square corners on controls. */
+  --btn-radius: 2px;
+}
+
+.dark {
+  --background: #14120b;
+  --foreground: #edecec;
+
+  --card: #1b1913;
+  --card-foreground: #edecec;
+
+  --primary: #edecec;
+  --primary-foreground: #14120b;
+
+  --secondary: #26241e;
+  --secondary-foreground: #edecec;
+
+  --muted: #26241e;
+  --muted-foreground: rgba(237, 236, 236, 0.55);
+
+  --accent: #8bc4f8;
+  --accent-foreground: #14120b;
+
+  --border: rgba(237, 236, 236, 0.12);
+  --input: rgba(237, 236, 236, 0.18);
+  --ring: rgba(237, 236, 236, 0.4);
+
+  --success: rgba(74, 222, 128, 0.12);
+  --success-foreground: #7ed9a5;
+  --warning: rgba(247, 199, 90, 0.12);
+  --warning-foreground: #efc676;
+  --danger: rgba(242, 105, 105, 0.14);
+  --danger-foreground: #ee8a8a;
+  --info: rgba(80, 155, 245, 0.14);
+  --info-foreground: #8cbcF7;
+
+  /* Cursor uses pill-shaped controls. */
+  --btn-radius: 9999px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --radius-button: var(--btn-radius);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}

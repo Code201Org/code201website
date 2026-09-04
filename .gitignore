@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Turborepo
+.turbo/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Misc
+.DS_Store
+*.pem
+coverage/
+.vercel
