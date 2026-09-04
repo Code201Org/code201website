@@ -49,13 +49,13 @@ import { Reveal } from "@/components/reveal";
 export function Hero() {
   return (
     <section className="relative flex w-full flex-col bg-background">
-      {/* Full window width & 100% full viewport height landing hero banner */}
-      <div className="relative flex min-h-[calc(100vh-4rem)] min-h-[calc(100svh-4rem)] w-full flex-col justify-center overflow-hidden border-b border-border">
+      {/* Full window width landing hero banner */}
+      <div className="relative flex min-h-0 sm:min-h-[calc(100vh-4rem)] sm:min-h-[calc(100svh-4rem)] w-full flex-col justify-center overflow-hidden border-b border-border">
         {/* Full-bleed background texture pattern */}
         <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           {/* Ambient radial glow highlights */}
-          <div className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[600px] rounded-full bg-accent/15 blur-[120px] dark:bg-accent/20" />
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[450px] rounded-full bg-primary/5 blur-[90px] dark:bg-primary/10" />
+          <div className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 h-[250px] sm:h-[350px] w-[350px] sm:w-[600px] rounded-full bg-accent/15 blur-[80px] sm:blur-[120px] dark:bg-accent/20" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[180px] sm:h-[250px] w-[280px] sm:w-[450px] rounded-full bg-primary/5 blur-[60px] sm:blur-[90px] dark:bg-primary/10" />
 
           {/* SVG Dot & Line Texture Pattern */}
           <svg
@@ -79,44 +79,44 @@ export function Hero() {
           </svg>
 
           {/* Bottom subtle fade into the next section */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-20 sm:h-32 bg-gradient-to-t from-background to-transparent" />
         </div>
 
-        {/* Fills the entire viewport on load: headline, CTAs, trust chips */}
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:py-24">
-          <h1 className="mx-auto max-w-4xl text-balance text-5xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+        {/* Compact on mobile, spacious on desktop */}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-4 py-8 sm:py-16 lg:py-24 text-center sm:px-6">
+          <h1 className="mx-auto max-w-4xl text-balance text-3xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             Code201 is the operating system for modern clinics.
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-muted-foreground">
+          <p className="mx-auto mt-3.5 sm:mt-6 max-w-xl text-pretty text-base sm:text-lg text-muted-foreground">
             Scheduling, charting, billing, and telehealth — unified in one
             HIPAA-compliant workspace, built by clinicians for clinical teams.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             <a href="/#pricing">
-              <Button size="lg">Start free trial</Button>
+              <Button size="lg" className="h-10 sm:h-11 px-4 sm:px-6 text-sm sm:text-base">Start free trial</Button>
             </a>
             <a href="/#features">
-              <Button size="lg" variant="ghost">
+              <Button size="lg" variant="ghost" className="h-10 sm:h-11 px-4 sm:px-6 text-sm sm:text-base">
                 Book a demo
-                <ArrowRight />
+                <ArrowRight className="h-4 w-4 ml-1" />
               </Button>
             </a>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-5 sm:mt-8 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
             <TrustChip icon={ShieldCheck} label="HIPAA compliant" />
             <TrustChip icon={FileCheck2} label="SOC 2 Type II" />
             <TrustChip icon={Stethoscope} label="ONC certified" />
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
             Free 14-day trial · No credit card required
           </p>
         </div>
       </div>
 
       {/* Product visual area */}
-      <div className="relative w-full border-b border-border bg-muted/40 py-12 sm:py-16">
-        <EcgLine className="mx-auto mb-8 h-10 w-full max-w-5xl px-4 text-accent/50 sm:px-6" />
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="relative w-full border-b border-border bg-muted/40 py-6 sm:py-16">
+        <EcgLine className="mx-auto mb-4 sm:mb-8 h-8 sm:h-10 w-full max-w-5xl px-4 text-accent/50 sm:px-6" />
+        <div className="mx-auto max-w-5xl px-2 sm:px-6">
           <HeroCallVisual />
         </div>
       </div>
@@ -132,7 +132,7 @@ function TrustChip({
   label: string;
 }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-button border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+    <span className="inline-flex items-center gap-1.5 rounded-button border border-border bg-card px-2.5 py-1 sm:px-3 text-xs font-medium text-muted-foreground">
       <Icon className="h-3.5 w-3.5 text-accent" />
       {label}
     </span>
@@ -158,9 +158,9 @@ function AudioWaveform({ className }: { className?: string }) {
 
 function HeroCallVisual() {
   return (
-    <div className="relative mx-auto max-w-5xl py-6 px-4 sm:px-12 md:px-20 lg:px-24">
+    <div className="relative mx-auto max-w-5xl py-4 sm:py-6 px-4 sm:px-12 md:px-20 lg:px-24">
       {/* Background Image Container */}
-      <div className="relative h-[380px] sm:h-[460px] md:h-[500px] w-full sm:w-[82%] md:w-[78%] ml-auto overflow-hidden rounded-3xl border border-border/80 bg-card shadow-2xl">
+      <div className="relative h-[310px] sm:h-[460px] md:h-[500px] w-[88%] sm:w-[82%] md:w-[78%] ml-auto overflow-hidden rounded-2xl sm:rounded-3xl border border-border/80 bg-card shadow-2xl">
         <Image
           src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80"
           alt="Patient on call with Code201 Concierge AI"
@@ -173,44 +173,44 @@ function HeroCallVisual() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating Dialogue Card 1 (Top Left - Extends Far Outside Image Border) */}
-      <div className="absolute top-3 -left-2 sm:top-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2.5 max-w-[270px] sm:max-w-[340px]">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-4 ring-background">
-          <LogoIcon unstyled className="h-4.5 w-4.5 text-background" />
+      {/* Floating Dialogue Card 1 (Top Left - Extends Outside Image Border) */}
+      <div className="absolute top-2 -left-1 sm:top-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2 sm:gap-2.5 max-w-[240px] xs:max-w-[270px] sm:max-w-[340px]">
+        <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-2 sm:ring-4 ring-background">
+          <LogoIcon unstyled className="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 text-background" />
         </div>
-        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
-          <AudioWaveform className="h-3 w-14 text-foreground mb-1.5" />
-          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+        <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-foreground mb-1 sm:mb-1.5" />
+          <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
             Hello, Rebecca! How can we help you today?
           </p>
         </div>
       </div>
 
       {/* Floating Dialogue Card 2 (Middle Left - Offset Outside Image Border) */}
-      <div className="absolute top-[38%] left-2 sm:left-4 md:-left-4 lg:-left-8 z-10 flex items-start gap-2.5 max-w-[250px] sm:max-w-[320px]">
-        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
-          <AudioWaveform className="h-3 w-14 text-muted-foreground mb-1.5" />
-          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+      <div className="absolute top-[36%] left-1 sm:left-4 md:-left-4 lg:-left-8 z-10 flex items-start gap-2 sm:gap-2.5 max-w-[220px] xs:max-w-[250px] sm:max-w-[320px]">
+        <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-muted-foreground mb-1 sm:mb-1.5" />
+          <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
             I had a question about a balance on my account.
           </p>
         </div>
       </div>
 
-      {/* Floating Dialogue Card 3 (Bottom Left - Extends Far Outside Image Border) */}
-      <div className="absolute bottom-3 -left-2 sm:bottom-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2.5 max-w-[280px] sm:max-w-[360px]">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-4 ring-background">
-          <LogoIcon unstyled className="h-4.5 w-4.5 text-background" />
+      {/* Floating Dialogue Card 3 (Bottom Left - Extends Outside Image Border) */}
+      <div className="absolute bottom-2 -left-1 sm:bottom-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2 sm:gap-2.5 max-w-[245px] xs:max-w-[280px] sm:max-w-[360px]">
+        <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-2 sm:ring-4 ring-background">
+          <LogoIcon unstyled className="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 text-background" />
         </div>
-        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
-          <AudioWaveform className="h-3 w-14 text-foreground mb-1.5" />
-          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+        <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-foreground mb-1 sm:mb-1.5" />
+          <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
             I see there's a $38 charge from January 11th. Let me investigate.
           </p>
         </div>
       </div>
 
       {/* Floating EHR Status Badge (Extends Outside Top Right Image Border) */}
-      <div className="absolute top-4 -right-1 sm:top-8 sm:-right-4 md:-right-8 z-10 flex items-center gap-2 rounded-full border border-border/80 bg-card/95 px-3.5 py-2 shadow-xl backdrop-blur text-xs font-semibold text-foreground">
+      <div className="absolute top-3 -right-1 sm:top-8 sm:-right-4 md:-right-8 z-10 flex items-center gap-1.5 sm:gap-2 rounded-full border border-border/80 bg-card/95 px-2.5 py-1.5 sm:px-3.5 sm:py-2 shadow-xl backdrop-blur text-[11px] sm:text-xs font-semibold text-foreground">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground opacity-50"></span>
           <span className="relative inline-flex h-2 w-2 rounded-full bg-foreground"></span>
@@ -219,7 +219,7 @@ function HeroCallVisual() {
       </div>
 
       {/* Floating Intake Action Badge (Extends Outside Bottom Right Image Border) */}
-      <div className="absolute bottom-4 -right-1 sm:bottom-8 sm:-right-4 md:-right-8 z-10 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 p-3 shadow-2xl backdrop-blur">
+      <div className="absolute bottom-3 -right-1 sm:bottom-8 sm:-right-4 md:-right-8 z-10 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 p-3 shadow-2xl backdrop-blur">
         <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-border bg-muted/40 text-foreground">
           <CircleCheck className="h-4 w-4" />
         </div>
@@ -1261,9 +1261,9 @@ export function Security() {
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <div
           style={{
-            opacity: Math.min(1, Math.max(0.35, overlayProgress * 2.5)),
+            opacity: Math.min(1, Math.max(0, overlayProgress * 2.5)),
             transform: `translateY(${
-              (1 - Math.min(1, overlayProgress * 2.5)) * 28
+              (1 - Math.min(1, Math.max(0, overlayProgress * 2.5))) * 28
             }px)`,
           }}
           className="mx-auto max-w-3xl text-center transition-all duration-500 ease-out"
@@ -1282,7 +1282,7 @@ export function Security() {
         </div>
 
         {/* Linear row of 4 compliance badge boxes (staggered & GUARANTEED 100% completion on scroll) */}
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-4">
+        <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-4">
           {complianceBadges.map((badge, idx) => {
             const startThresh = 0.05 + idx * 0.07;
             const progress = Math.max(
@@ -1296,10 +1296,10 @@ export function Security() {
                   opacity: progress,
                   transform: `translateY(${(1 - progress) * 36}px)`,
                 }}
-                className="flex items-center justify-center gap-2.5 rounded-xl border border-border bg-card/95 p-4 shadow-sm backdrop-blur transition-all duration-500 ease-out"
+                className="flex items-center justify-center gap-2 sm:gap-2.5 rounded-xl border border-border bg-card/95 p-3 sm:p-4 shadow-sm backdrop-blur transition-all duration-500 ease-out"
               >
-                <ShieldCheck className="h-4.5 w-4.5 shrink-0 text-accent" />
-                <span className="text-xs font-bold tracking-wider text-foreground">
+                <ShieldCheck className="h-4 w-4 sm:h-4.5 sm:w-4.5 shrink-0 text-accent" />
+                <span className="text-[11px] sm:text-xs font-bold tracking-wider text-foreground">
                   {badge}
                 </span>
               </div>
@@ -1307,8 +1307,8 @@ export function Security() {
           })}
         </div>
 
-        {/* Staggered security feature cards (staggered & GUARANTEED 100% completion on scroll) */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Staggered security feature cards (compact 2-column mobile grid & GUARANTEED 100% completion on scroll) */}
+        <div className="mt-4 sm:mt-8 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
           {securityCards.map(({ icon: Icon, title, description }, idx) => {
             const startThresh = 0.22 + idx * 0.07;
             const progress = Math.max(
@@ -1322,15 +1322,17 @@ export function Security() {
                   opacity: progress,
                   transform: `translateY(${(1 - progress) * 44}px)`,
                 }}
-                className="rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition-all duration-500 ease-out hover:border-accent/40 hover:shadow-md"
+                className="flex flex-col justify-between rounded-xl sm:rounded-2xl border border-border bg-card p-3.5 sm:p-6 shadow-sm backdrop-blur transition-all duration-500 ease-out hover:border-accent/40 hover:shadow-md"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-button bg-accent/10 text-accent">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-semibold text-foreground">{title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                  {description}
-                </p>
+                <div>
+                  <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-button bg-accent/10 text-accent">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </span>
+                  <h3 className="mt-3 text-xs sm:text-sm font-semibold text-foreground leading-snug">{title}</h3>
+                  <p className="mt-1.5 text-[11px] sm:text-xs leading-relaxed text-muted-foreground">
+                    {description}
+                  </p>
+                </div>
               </div>
             );
           })}
