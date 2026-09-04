@@ -725,82 +725,143 @@ export function Specialties() {
   );
 }
 
-// ---- Stats band (inverted monochrome statement) ----
+// ---- Platform Solutions (Strict Monochrome Asymmetric Tiled Grid) ----
 
-const stats = [
-  { value: "14,000+", label: "Providers on Code201" },
-  { value: "9.2M", label: "Patient records managed" },
-  { value: "1.4M", label: "Clinical notes signed yearly" },
-  { value: "$310M", label: "Claims processed annually" },
-];
-
-export function StatsBand() {
+export function CaseStudies() {
   return (
-    <section className="bg-foreground py-14 text-background">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-6 px-4 sm:px-6 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <div key={stat.label} className="text-center">
-            <p className="text-4xl font-medium tracking-tight sm:text-5xl">
-              {stat.value}
-            </p>
-            <p className="mt-2 text-sm opacity-70">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ---- Workflow (intake → visit → after care) ----
-
-const workflow = [
-  {
-    step: "01",
-    title: "Before the visit",
-    body: "Patients self-book with real-time eligibility checks. The chart arrives prepped — history, medications, allergies, and recent labs in one view.",
-  },
-  {
-    step: "02",
-    title: "During the visit",
-    body: "Vitals flow straight into the note, the assessment and plan draft themselves as the conversation happens, and prescriptions are two taps away.",
-  },
-  {
-    step: "03",
-    title: "After the visit",
-    body: "One tap signs the note. The claim goes out scrubbed with the right CPT and ICD-10 codes, and remittance is tracked to a zero balance.",
-  },
-];
-
-export function Workflow() {
-  return (
-    <section id="workflow" className="border-b border-border bg-background py-16 lg:py-20">
+    <section id="solutions" className="border-b border-border bg-background py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            The clinical loop
-          </p>
-          <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-            From intake to paid claim
-          </h2>
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-border/60 pb-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Core Capabilities
+            </p>
+            <h2 className="mt-1 text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+              Platform solutions
+            </h2>
+          </div>
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+          >
+            Explore all solutions
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3 lg:gap-8">
-          {workflow.map((item) => (
-            <div
-              key={item.step}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-accent/40"
-            >
-              <span className="font-mono text-sm font-semibold text-accent">
-                {item.step}
-              </span>
-              <h3 className="mt-3 text-lg font-semibold text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {item.body}
-              </p>
+        {/* 3-Column Tiled Grid (Strict Black & White / Monochrome) */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Column 1 - Left */}
+          <div className="flex flex-col gap-6">
+            {/* Card 1: Front-Desk Call Triage */}
+            <div className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all hover:border-foreground/40 hover:shadow-md h-[300px]">
+              <div>
+                <span className="inline-block rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-mono font-medium text-foreground">
+                  Front-Desk Automation
+                </span>
+                <h3 className="mt-4 text-xl sm:text-2xl font-medium tracking-tight text-foreground leading-snug">
+                  24/7 Patient phone inquiries & instant hold-time elimination
+                </h3>
+              </div>
+              <div className="flex items-center gap-2 pt-4 border-t border-border/60 text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">
+                <PhoneCall className="h-4 w-4" />
+                Automated Call Triage
+              </div>
             </div>
-          ))}
+
+            {/* Card 2: Prior Authorization */}
+            <div className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all hover:border-foreground/40 hover:shadow-md h-[260px]">
+              <div>
+                <span className="inline-block rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-mono font-medium text-foreground">
+                  Insurance & Approvals
+                </span>
+                <h3 className="mt-3 text-lg sm:text-xl font-medium tracking-tight text-foreground leading-snug">
+                  Automated prior authorization routing & real-time claims scrubbing
+                </h3>
+              </div>
+              <div className="flex items-center gap-2 pt-4 border-t border-border/60 text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">
+                <FileCheck2 className="h-4 w-4" />
+                Prior Authorization Engine
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2 - Middle (Tall Featured Card with Monochrome Device Visual) */}
+          <div className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-md transition-all hover:border-foreground/40 min-h-[580px] overflow-hidden">
+            <div>
+              <span className="inline-block rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-mono font-medium text-foreground">
+                Patient Concierge AI
+              </span>
+              <h3 className="mt-3 text-2xl font-medium tracking-tight text-foreground leading-snug">
+                Autonomous voice assistant for 24/7 self-booking & urgent triage
+              </h3>
+            </div>
+
+            {/* Monochrome Phone Mockup in Center */}
+            <div className="my-6 mx-auto w-full max-w-[240px] rounded-[32px] border-2 border-border bg-background p-3 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="flex items-center justify-between border-b border-border/60 pb-2 mb-3">
+                <span className="text-[10px] font-mono text-muted-foreground">09:41 AM</span>
+                <span className="flex h-2 w-2 rounded-full bg-foreground" />
+              </div>
+              <div className="space-y-2 text-xs">
+                <div className="rounded-xl border border-border bg-muted/40 p-2.5 text-foreground">
+                  <p className="font-mono text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Code201 AI</p>
+                  "Dr. Osei has an opening Tuesday at 9:15 AM. Shall I confirm?"
+                </div>
+                <div className="rounded-xl border border-border bg-card p-2.5 text-foreground ml-4 text-right">
+                  "Yes please, Tuesday works great!"
+                </div>
+                <div className="rounded-xl border border-border bg-foreground text-background p-2 text-[11px] font-mono font-medium text-center">
+                  ✓ EHR Calendar Synced
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 pt-4 border-t border-border/60 text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">
+              <Activity className="h-4 w-4" />
+              Concierge AI Suite
+            </div>
+          </div>
+
+          {/* Column 3 - Right */}
+          <div className="flex flex-col gap-6">
+            {/* Card 3: RCM & Coding */}
+            <div className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all hover:border-foreground/40 hover:shadow-md h-[300px]">
+              <div>
+                <span className="inline-block rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-mono font-medium text-foreground">
+                  Revenue Cycle
+                </span>
+                <h3 className="mt-3 text-xl font-medium tracking-tight text-foreground leading-snug">
+                  Real-time E/M level suggestions & ICD-10 code extraction
+                </h3>
+                <div className="mt-3 flex items-center justify-between rounded-xl border border-border bg-muted/30 px-3 py-2 text-xs font-mono">
+                  <span className="text-muted-foreground">CPT: 99214</span>
+                  <span className="font-semibold text-foreground">Status: Scrubbed</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 pt-4 border-t border-border/60 text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">
+                <ShieldCheck className="h-4 w-4" />
+                RCM Intelligence
+              </div>
+            </div>
+
+            {/* Card 4: Specialty Presets */}
+            <div className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all hover:border-foreground/40 hover:shadow-md h-[260px]">
+              <div>
+                <span className="inline-block rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-mono font-medium text-foreground">
+                  Specialty Presets
+                </span>
+                <h3 className="mt-3 text-lg sm:text-xl font-medium tracking-tight text-foreground leading-snug">
+                  Pre-configured clinical workflows for 40+ medical specialties
+                </h3>
+              </div>
+              <div className="flex items-center gap-2 pt-4 border-t border-border/60 text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">
+                <Stethoscope className="h-4 w-4" />
+                Multi-Specialty Engine
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

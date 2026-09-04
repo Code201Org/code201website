@@ -1,5 +1,6 @@
 import {
   BottomCta,
+  CaseStudies,
   Faq,
   FeatureGrid,
   FeatureSections,
@@ -11,9 +12,7 @@ import {
   Security,
   Specialties,
   SpecialtySwitcher,
-  StatsBand,
   Testimonials,
-  Workflow,
 } from "@/components/sections";
 
 export default function HomePage() {
@@ -24,8 +23,7 @@ export default function HomePage() {
       <FeatureSections />
       <Specialties />
       <SpecialtySwitcher />
-      <StatsBand />
-      <Workflow />
+      <CaseStudies />
       <RoiCalculator />
       <FeatureGrid />
       <Integrations />
