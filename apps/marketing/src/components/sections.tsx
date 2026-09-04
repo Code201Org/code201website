@@ -113,7 +113,7 @@ export function Hero() {
       <div className="relative w-full border-b border-border bg-muted/40 py-12 sm:py-16">
         <EcgLine className="mx-auto mb-8 h-10 w-full max-w-5xl px-4 text-accent/50 sm:px-6" />
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <DashboardMockup />
+          <HeroCallVisual />
         </div>
       </div>
     </section>
@@ -135,107 +135,90 @@ function TrustChip({
   );
 }
 
-function DashboardMockup() {
+function AudioWaveform({ className }: { className?: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-card shadow-2xl">
-      {/* browser chrome */}
-      <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
-        <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-danger" />
-          <span className="h-2.5 w-2.5 rounded-full bg-warning" />
-          <span className="h-2.5 w-2.5 rounded-full bg-success" />
-        </div>
-        <span className="mx-auto rounded-button bg-muted px-3 py-0.5 text-[11px] text-muted-foreground">
-          app.code201.health
-        </span>
-        <span className="w-10" />
+    <svg viewBox="0 0 40 12" fill="currentColor" className={className} aria-hidden="true">
+      <rect x="0" y="3" width="2" height="6" rx="1" />
+      <rect x="4" y="1" width="2" height="10" rx="1" />
+      <rect x="8" y="4" width="2" height="4" rx="1" />
+      <rect x="12" y="0" width="2" height="12" rx="1" />
+      <rect x="16" y="2" width="2" height="8" rx="1" />
+      <rect x="20" y="5" width="2" height="2" rx="1" />
+      <rect x="24" y="1" width="2" height="10" rx="1" />
+      <rect x="28" y="3" width="2" height="6" rx="1" />
+      <rect x="32" y="0" width="2" height="12" rx="1" />
+      <rect x="36" y="4" width="2" height="4" rx="1" />
+    </svg>
+  );
+}
+
+function HeroCallVisual() {
+  return (
+    <div className="relative mx-auto max-w-5xl py-6 px-4 sm:px-12 md:px-20 lg:px-24">
+      {/* Background Image Container */}
+      <div className="relative h-[380px] sm:h-[460px] md:h-[500px] w-full sm:w-[82%] md:w-[78%] ml-auto overflow-hidden rounded-3xl border border-border/80 bg-card shadow-2xl">
+        <img
+          src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80"
+          alt="Patient on call with Code201 Concierge AI"
+          className="h-full w-full object-cover object-[center_20%]"
+        />
+        {/* Soft Left Side Gradient Overlay for Dialogue Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent pointer-events-none" />
       </div>
 
-      <div className="grid grid-cols-[52px_1fr] sm:grid-cols-[160px_1fr]">
-        {/* mini sidebar */}
-        <div className="flex flex-col gap-1 border-r border-border p-2.5 sm:p-3">
-          {["Dashboard", "Patients", "Appointments", "Providers", "Billing"].map(
-            (item, i) => (
-              <span
-                key={item}
-                className={
-                  i === 0
-                    ? "rounded-button bg-muted px-2 py-1.5 text-[11px] font-medium text-foreground"
-                    : "rounded-button px-2 py-1.5 text-[11px] text-muted-foreground"
-                }
-              >
-                {item}
-              </span>
-            )
-          )}
+      {/* Floating Dialogue Card 1 (Top Left - Extends Far Outside Image Border) */}
+      <div className="absolute top-3 -left-2 sm:top-6 sm:-left-8 md:-left-16 lg:-left-20 z-20 flex items-start gap-2.5 max-w-[270px] sm:max-w-[340px]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg ring-4 ring-background">
+          <LogoIcon unstyled className="h-4.5 w-4.5 text-accent-foreground" />
         </div>
+        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-3 w-14 text-accent mb-1.5" />
+          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+            Hello, Rebecca! How can we help you today?
+          </p>
+        </div>
+      </div>
 
-        {/* mini main panel */}
-        <div className="p-4 text-left sm:p-5">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold text-foreground">
-              Margaret Chen · MRN-482913
-            </p>
-            <Badge variant="info">F · 67y</Badge>
-          </div>
+      {/* Floating Dialogue Card 2 (Middle Left - Offset Outside Image Border) */}
+      <div className="absolute top-[38%] left-2 sm:left-4 md:-left-4 lg:-left-8 z-20 flex items-start gap-2.5 max-w-[250px] sm:max-w-[320px]">
+        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-3 w-14 text-muted-foreground mb-1.5" />
+          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+            I had a question about a balance on my account.
+          </p>
+        </div>
+      </div>
 
-          {/* vitals strip */}
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {["BP 124/78", "HR 72", "SpO₂ 98%", "A1c 5.9%"].map((vital) => (
-              <span
-                key={vital}
-                className="rounded-button border border-border bg-background px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
-              >
-                {vital}
-              </span>
-            ))}
-          </div>
+      {/* Floating Dialogue Card 3 (Bottom Left - Extends Far Outside Image Border) */}
+      <div className="absolute bottom-3 -left-2 sm:bottom-6 sm:-left-8 md:-left-16 lg:-left-20 z-20 flex items-start gap-2.5 max-w-[280px] sm:max-w-[360px]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg ring-4 ring-background">
+          <LogoIcon unstyled className="h-4.5 w-4.5 text-accent-foreground" />
+        </div>
+        <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
+          <AudioWaveform className="h-3 w-14 text-accent mb-1.5" />
+          <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+            I see there's a $38 charge from January 11th. Let me investigate.
+          </p>
+        </div>
+      </div>
 
-          <div className="mt-4 grid grid-cols-3 gap-2.5">
-            {[
-              ["Appointments", "12"],
-              ["Active patients", "11"],
-              ["Pending claims", "4"],
-            ].map(([label, value]) => (
-              <div
-                key={label}
-                className="rounded-lg border border-border bg-background p-2.5"
-              >
-                <p className="text-base font-semibold text-foreground sm:text-lg">
-                  {value}
-                </p>
-                <p className="text-[10px] text-muted-foreground sm:text-[11px]">
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Floating EHR Status Badge (Extends Outside Top Right Image Border) */}
+      <div className="absolute top-4 -right-1 sm:top-8 sm:-right-4 md:-right-8 z-20 flex items-center gap-2 rounded-full border border-border/80 bg-card/95 px-3.5 py-2 shadow-xl backdrop-blur text-xs font-semibold text-foreground">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+        </span>
+        <span>24/7 EHR Sync</span>
+      </div>
 
-          <div className="mt-4 space-y-2">
-            {[
-              ["8:00 AM", "Henry Fitzgerald", "Dr. Okafor", "Completed", "success"],
-              ["9:30 AM", "Thomas Brennan", "R. Goldstein", "In Progress", "warning"],
-              ["10:00 AM", "Marcus Washington", "Dr. Raghavan", "Checked In", "info"],
-              ["1:30 PM", "Sofia Nguyen", "Dr. Alvarez", "Scheduled", "secondary"],
-            ].map(([time, patient, provider, status, variant]) => (
-              <div
-                key={patient}
-                className="flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-2"
-              >
-                <span className="hidden w-14 text-[11px] text-muted-foreground sm:block">
-                  {time}
-                </span>
-                <span className="min-w-0 flex-1 truncate text-xs text-foreground">
-                  {patient}
-                  <span className="hidden text-muted-foreground sm:inline">
-                    {" "}
-                    · {provider}
-                  </span>
-                </span>
-                <Badge variant={variant as never}>{status}</Badge>
-              </div>
-            ))}
-          </div>
+      {/* Floating Intake Action Badge (Extends Outside Bottom Right Image Border) */}
+      <div className="absolute bottom-4 -right-1 sm:bottom-8 sm:-right-4 md:-right-8 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 p-3 shadow-2xl backdrop-blur">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
+          <CircleCheck className="h-4 w-4" />
+        </div>
+        <div className="text-left text-xs">
+          <p className="font-semibold text-foreground">Appointment Booked</p>
+          <p className="text-[11px] text-muted-foreground">Tuesday • 9:30 AM</p>
         </div>
       </div>
     </div>
