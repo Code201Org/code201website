@@ -92,10 +92,10 @@ export function Hero() {
             HIPAA-compliant workspace, built by clinicians for clinical teams.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="#pricing">
+            <a href="/#pricing">
               <Button size="lg">Start free trial</Button>
             </a>
-            <a href="#features">
+            <a href="/#features">
               <Button size="lg" variant="ghost">
                 Book a demo
                 <ArrowRight />
@@ -174,12 +174,12 @@ function HeroCallVisual() {
       </div>
 
       {/* Floating Dialogue Card 1 (Top Left - Extends Far Outside Image Border) */}
-      <div className="absolute top-3 -left-2 sm:top-6 sm:-left-8 md:-left-16 lg:-left-20 z-20 flex items-start gap-2.5 max-w-[270px] sm:max-w-[340px]">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg ring-4 ring-background">
-          <LogoIcon unstyled className="h-4.5 w-4.5 text-accent-foreground" />
+      <div className="absolute top-3 -left-2 sm:top-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2.5 max-w-[270px] sm:max-w-[340px]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-4 ring-background">
+          <LogoIcon unstyled className="h-4.5 w-4.5 text-background" />
         </div>
         <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
-          <AudioWaveform className="h-3 w-14 text-accent mb-1.5" />
+          <AudioWaveform className="h-3 w-14 text-foreground mb-1.5" />
           <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
             Hello, Rebecca! How can we help you today?
           </p>
@@ -187,7 +187,7 @@ function HeroCallVisual() {
       </div>
 
       {/* Floating Dialogue Card 2 (Middle Left - Offset Outside Image Border) */}
-      <div className="absolute top-[38%] left-2 sm:left-4 md:-left-4 lg:-left-8 z-20 flex items-start gap-2.5 max-w-[250px] sm:max-w-[320px]">
+      <div className="absolute top-[38%] left-2 sm:left-4 md:-left-4 lg:-left-8 z-10 flex items-start gap-2.5 max-w-[250px] sm:max-w-[320px]">
         <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
           <AudioWaveform className="h-3 w-14 text-muted-foreground mb-1.5" />
           <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
@@ -197,12 +197,12 @@ function HeroCallVisual() {
       </div>
 
       {/* Floating Dialogue Card 3 (Bottom Left - Extends Far Outside Image Border) */}
-      <div className="absolute bottom-3 -left-2 sm:bottom-6 sm:-left-8 md:-left-16 lg:-left-20 z-20 flex items-start gap-2.5 max-w-[280px] sm:max-w-[360px]">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg ring-4 ring-background">
-          <LogoIcon unstyled className="h-4.5 w-4.5 text-accent-foreground" />
+      <div className="absolute bottom-3 -left-2 sm:bottom-6 sm:-left-8 md:-left-16 lg:-left-20 z-10 flex items-start gap-2.5 max-w-[280px] sm:max-w-[360px]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background shadow-lg ring-4 ring-background">
+          <LogoIcon unstyled className="h-4.5 w-4.5 text-background" />
         </div>
         <div className="rounded-2xl border border-border/80 bg-card/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur text-left">
-          <AudioWaveform className="h-3 w-14 text-accent mb-1.5" />
+          <AudioWaveform className="h-3 w-14 text-foreground mb-1.5" />
           <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
             I see there's a $38 charge from January 11th. Let me investigate.
           </p>
@@ -210,22 +210,22 @@ function HeroCallVisual() {
       </div>
 
       {/* Floating EHR Status Badge (Extends Outside Top Right Image Border) */}
-      <div className="absolute top-4 -right-1 sm:top-8 sm:-right-4 md:-right-8 z-20 flex items-center gap-2 rounded-full border border-border/80 bg-card/95 px-3.5 py-2 shadow-xl backdrop-blur text-xs font-semibold text-foreground">
+      <div className="absolute top-4 -right-1 sm:top-8 sm:-right-4 md:-right-8 z-10 flex items-center gap-2 rounded-full border border-border/80 bg-card/95 px-3.5 py-2 shadow-xl backdrop-blur text-xs font-semibold text-foreground">
         <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground opacity-50"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-foreground"></span>
         </span>
         <span>24/7 EHR Sync</span>
       </div>
 
       {/* Floating Intake Action Badge (Extends Outside Bottom Right Image Border) */}
-      <div className="absolute bottom-4 -right-1 sm:bottom-8 sm:-right-4 md:-right-8 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 p-3 shadow-2xl backdrop-blur">
-        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
+      <div className="absolute bottom-4 -right-1 sm:bottom-8 sm:-right-4 md:-right-8 z-10 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 p-3 shadow-2xl backdrop-blur">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-border bg-muted/40 text-foreground">
           <CircleCheck className="h-4 w-4" />
         </div>
         <div className="text-left text-xs">
           <p className="font-semibold text-foreground">Appointment Booked</p>
-          <p className="text-[11px] text-muted-foreground">Tuesday • 9:30 AM</p>
+          <p className="text-[11px] text-muted-foreground font-mono">Tuesday • 9:30 AM</p>
         </div>
       </div>
     </div>
@@ -635,27 +635,37 @@ export function HowItWorks() {
       if (!timelineRef.current) return;
       const rect = timelineRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      const centerLine = windowHeight / 2;
 
-      // Center point calculation: timeline progress as center of screen moves through timeline
-      const centerPos = windowHeight / 2 - rect.top;
-      const totalDist = rect.height;
-
-      const rawProgress = totalDist > 0 ? centerPos / totalDist : 0;
-      const progress = Math.max(0, Math.min(1, rawProgress));
+      // Fill line height relative to viewport center line
+      const totalHeight = rect.height;
+      const scrolled = centerLine - rect.top;
+      const progress = Math.max(0, Math.min(1, totalHeight > 0 ? scrolled / totalHeight : 0));
 
       setScrollProgress(progress);
 
-      const stepIdx = Math.min(
-        workflowSteps.length - 1,
-        Math.max(0, Math.floor(progress * workflowSteps.length))
-      );
-      setActiveStep(stepIdx);
+      // Dynamically detect which step is currently passing center of viewport
+      const stepNodes = timelineRef.current.querySelectorAll<HTMLDivElement>("[data-step-index]");
+      let currentStep = 0;
+
+      stepNodes.forEach((node, index) => {
+        const nodeRect = node.getBoundingClientRect();
+        if (nodeRect.top <= centerLine + 100) {
+          currentStep = index;
+        }
+      });
+
+      setActiveStep(currentStep);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
@@ -682,17 +692,17 @@ export function HowItWorks() {
         {/* Vertical Timeline Stepper Container */}
         <div
           ref={timelineRef}
-          className="relative mt-16 sm:mt-24 flex gap-6 sm:gap-12 md:gap-16"
+          className="relative mt-16 sm:mt-24 flex gap-6 sm:gap-12 md:gap-16 min-h-[600px]"
         >
           {/* Sticky Left Line & Indicator Column */}
-          <div className="relative flex flex-col items-center w-10 sm:w-12">
+          <div className="relative flex flex-col items-center w-10 sm:w-12 shrink-0">
             {/* Background Line Track */}
-            <div className="absolute top-0 bottom-0 w-0.5 bg-border/60" />
+            <div className="absolute top-4 bottom-4 w-0.5 bg-border/60" />
 
             {/* Filled Animated Scroll Line */}
             <div
-              className="absolute top-0 w-0.5 bg-foreground rounded-full transition-all duration-75 ease-out"
-              style={{ height: `${scrollProgress * 100}%` }}
+              className="absolute top-4 w-0.5 bg-foreground rounded-full transition-all duration-100 ease-out"
+              style={{ height: `calc(${scrollProgress * 100}% - 2rem)` }}
             />
 
             {/* Sticky Center-Viewport Floating Indicator Node (Zero Lag) */}
@@ -711,12 +721,13 @@ export function HowItWorks() {
               return (
                 <div
                   key={step.step}
-                  className={`group relative flex flex-col items-start gap-3 transition-all duration-500 ${
+                  data-step-index={idx}
+                  className={`group relative flex flex-col items-start gap-3 transition-all duration-300 ${
                     isCurrent
                       ? "opacity-100 scale-[1.02] translate-x-0"
                       : isActive
-                      ? "opacity-80 translate-x-0"
-                      : "opacity-35 translate-x-1"
+                      ? "opacity-75 translate-x-0"
+                      : "opacity-30 translate-x-1"
                   }`}
                 >
                   {/* Black & White Monochrome Step Icon Box */}
