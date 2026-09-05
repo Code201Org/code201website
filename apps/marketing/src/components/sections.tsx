@@ -41,7 +41,7 @@ import { Reveal } from "@/components/reveal";
 
 export function Hero() {
   return (
-    <section className="relative flex w-full flex-col overflow-x-hidden bg-background">
+    <section className="relative flex w-full flex-col overflow-x-clip bg-background">
       {/* Full window width landing hero banner */}
       <div className="relative flex min-h-0 sm:min-h-[calc(100vh-4rem)] sm:min-h-[calc(100svh-4rem)] w-full flex-col justify-center overflow-hidden border-b border-border">
         {/* Full-bleed background texture pattern */}
@@ -640,37 +640,27 @@ export function HowItWorks() {
       if (!timelineRef.current) return;
       const rect = timelineRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const centerLine = windowHeight / 2;
 
-      // Fill line height relative to viewport center line
-      const totalHeight = rect.height;
-      const scrolled = centerLine - rect.top;
-      const progress = Math.max(0, Math.min(1, totalHeight > 0 ? scrolled / totalHeight : 0));
+      // Center point calculation: timeline progress as center of screen moves through timeline
+      const centerPos = windowHeight / 2 - rect.top;
+      const totalDist = rect.height;
+
+      const rawProgress = totalDist > 0 ? centerPos / totalDist : 0;
+      const progress = Math.max(0, Math.min(1, rawProgress));
 
       setScrollProgress(progress);
 
-      // Dynamically detect which step is currently passing center of viewport
-      const stepNodes = timelineRef.current.querySelectorAll<HTMLDivElement>("[data-step-index]");
-      let currentStep = 0;
-
-      stepNodes.forEach((node, index) => {
-        const nodeRect = node.getBoundingClientRect();
-        if (nodeRect.top <= centerLine + 100) {
-          currentStep = index;
-        }
-      });
-
-      setActiveStep(currentStep);
+      const stepIdx = Math.min(
+        workflowSteps.length - 1,
+        Math.max(0, Math.floor(progress * workflowSteps.length))
+      );
+      setActiveStep(stepIdx);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -695,17 +685,17 @@ export function HowItWorks() {
         {/* Vertical Timeline Stepper Container */}
         <div
           ref={timelineRef}
-          className="relative mt-16 sm:mt-24 flex gap-6 sm:gap-12 md:gap-16 min-h-[600px]"
+          className="relative mt-16 sm:mt-24 flex gap-6 sm:gap-12 md:gap-16"
         >
           {/* Sticky Left Line & Indicator Column */}
           <div className="relative flex flex-col items-center w-10 sm:w-12 shrink-0">
             {/* Background Line Track */}
-            <div className="absolute top-4 bottom-4 w-0.5 bg-border/60" />
+            <div className="absolute top-0 bottom-0 w-0.5 bg-border/60" />
 
             {/* Filled Animated Scroll Line */}
             <div
-              className="absolute top-4 w-0.5 bg-foreground rounded-full transition-all duration-100 ease-out"
-              style={{ height: `calc(${scrollProgress * 100}% - 2rem)` }}
+              className="absolute top-0 w-0.5 bg-foreground rounded-full transition-all duration-75 ease-out"
+              style={{ height: `${scrollProgress * 100}%` }}
             />
 
             {/* Sticky Center-Viewport Floating Indicator Node (Zero Lag) */}

@@ -51,7 +51,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-background font-sans text-foreground antialiased overflow-x-hidden max-w-full">
+      <body className="bg-background font-sans text-foreground antialiased overflow-x-clip max-w-full">
         {/* Image CDN hints for the Unsplash-hosted banner photos */}
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
