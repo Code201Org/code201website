@@ -1,18 +1,14 @@
 import {
   BottomCta,
   Faq,
-  FeatureGrid,
   FeatureSections,
   Hero,
   HowItWorks,
-  Integrations,
   Pricing,
   ProvenAtScale,
-  RoiCalculator,
   Security,
-  Solutions,
-  SpecialtyPresets,
   Testimonials,
+  ThreeProblems,
 } from "@/components/sections";
 
 export default function HomePage() {
@@ -20,16 +16,12 @@ export default function HomePage() {
     <>
       <Hero />
       <ProvenAtScale />
+      <ThreeProblems />
       <FeatureSections />
       <HowItWorks />
-      <SpecialtyPresets />
-      <Solutions />
-      <RoiCalculator />
-      <FeatureGrid />
-      <Integrations />
+      <Pricing />
       <Testimonials />
       <Security />
-      <Pricing />
       <Faq />
       <BottomCta />
     </>

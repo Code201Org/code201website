@@ -1,70 +1,66 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 
-import { Button } from "@repo/ui";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Book Engineering Consultation | Code201",
   description:
-    "Talk to the Code201 team about bringing your clinic onto the platform — demos, pricing, and migrations.",
+    "Schedule a technical consultation with Code201 forward-deployed engineering leads to discuss healthcare CRMs, operational automation, and real-time analytics.",
 };
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to home
+        Back to Overview
       </Link>
 
-      <h1 className="mt-8 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-        Talk to our team
+      <h1 className="mt-8 text-3xl font-medium tracking-tight text-foreground sm:text-5xl">
+        Book an Engineering Consultation
       </h1>
-      <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-        Demos, pricing, migrations — tell us about your practice and we&apos;ll
-        show you what Code201 looks like with your workflow in it.
+      <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
+        Tell us about your healthcare operations, data architecture, and integration bottlenecks. Our engineering leads will review your workflow and scope out a target solution architecture.
       </p>
 
       <div className="mt-10 rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
-        <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-button bg-accent/10 text-accent">
-            <Mail className="h-5 w-5" />
-          </span>
-          <div>
-            <p className="font-semibold text-foreground">Email us</p>
-            <p className="text-sm text-muted-foreground">
-              We reply within one business day.
-            </p>
-          </div>
-        </div>
-        <a
-          href="mailto:hello@code201.health"
-          className="mt-4 inline-block text-lg font-medium text-accent hover:underline"
-        >
-          hello@code201.health
-        </a>
+        <h2 className="text-lg font-semibold text-foreground">Talk to our team</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Share a few details and we&apos;ll draft the email for you — it goes straight to the engineers who would work on your system, not a queue.
+        </p>
 
-        <div className="mt-8 flex flex-wrap gap-3 border-t border-border pt-6">
-          <Link href="/#pricing">
-            <Button>
-              See pricing
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
-          <Link href="/case-studies">
-            <Button variant="outline">Read case studies</Button>
-          </Link>
+        <div className="mt-6">
+          <ContactForm />
         </div>
+
+        <p className="mt-8 border-t border-border pt-6 text-sm text-muted-foreground">
+          Prefer email? Write to us directly at{" "}
+          <a
+            href="mailto:engineering@code201.in"
+            className="font-medium text-accent hover:underline"
+          >
+            engineering@code201.in
+          </a>
+          .
+        </p>
       </div>
 
-      <p className="mt-10 text-sm text-muted-foreground">
-        Existing customer? Reach support from the help drawer inside the app —
-        it routes straight to your onboarding specialist.
-      </p>
+      <div className="mt-10 rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8 flex items-start gap-4">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+          <Calendar className="h-5 w-5" />
+        </span>
+        <div>
+          <p className="font-semibold text-foreground">15-Minute Architecture Review</p>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            Discuss EHR integration points (Epic, Athena, Cerner, Elation), custom CRMs, and revenue leakage telemetry.
+          </p>
+        </div>
+      </div>
     </main>
   );
 }

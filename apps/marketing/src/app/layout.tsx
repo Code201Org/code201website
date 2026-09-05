@@ -6,43 +6,43 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://code201.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Code201 — EHR, Practice Management & Billing for Modern Clinics",
+    default: "Code201 — Healthcare Operations, Engineered Properly",
     template: "%s · Code201",
   },
   description:
-    "Code201 unifies charting, scheduling, telehealth, and medical billing in one HIPAA-compliant platform for independent practices and clinics.",
+    "Code201 works alongside ambitious healthcare teams to build CRMs, automation, analytics, and AI systems that reduce operational chaos and revenue leakage.",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   openGraph: {
     type: "website",
-    url: "/",
+    url: siteUrl,
     siteName: "Code201",
-    title: "Code201 — EHR, Practice Management & Billing for Modern Clinics",
+    title: "Code201 — Healthcare Operations, Engineered Properly",
     description:
-      "Scheduling, charting, billing, and telehealth — unified in one HIPAA-compliant workspace, built by clinicians for clinical teams.",
+      "Code201 works alongside ambitious healthcare teams to build CRMs, automation, analytics, and AI systems that reduce operational chaos and revenue leakage.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Code201 — EHR, Practice Management & Billing for Modern Clinics",
+    title: "Code201 — Healthcare Operations, Engineered Properly",
     description:
-      "Scheduling, charting, billing, and telehealth — unified in one HIPAA-compliant workspace, built by clinicians for clinical teams.",
+      "Code201 works alongside ambitious healthcare teams to build CRMs, automation, analytics, and AI systems that reduce operational chaos and revenue leakage.",
   },
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Code201 Health, Inc.",
+  name: "Code201",
   url: siteUrl,
   logo: `${siteUrl}/icon.svg`,
   description:
-    "Code201 is the operating system for modern clinics — scheduling, charting, billing, and telehealth in one HIPAA-compliant platform.",
+    "Forward-deployed healthcare engineering — building CRMs, automation, analytics, and AI systems alongside ambitious healthcare teams.",
   sameAs: [],
 };
 

@@ -13,24 +13,17 @@ import {
   FileCheck2,
   FileHeart,
   KeyRound,
-  MessageSquareText,
   NotebookPen,
-  Pause,
   PhoneCall,
   Pill,
-  Play,
   Plus,
-  Quote,
   RefreshCw,
   Search,
   ShieldCheck,
-  Sliders,
   Sparkles,
-  Star,
   Stethoscope,
   UserRound,
   Video,
-  Volume2,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -84,31 +77,39 @@ export function Hero() {
 
         {/* Compact on mobile, spacious on desktop */}
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-4 py-8 sm:py-16 lg:py-24 text-center sm:px-6">
+          <Badge variant="outline" className="mb-4 gap-1.5 border-accent/40 bg-accent/10 text-accent hover:bg-accent/15 px-3 py-1">
+            <Sparkles className="h-3.5 w-3.5" />
+            Forward-Deployed Healthcare Engineering
+          </Badge>
           <h1 className="mx-auto max-w-4xl text-balance text-3xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            Code201 is the operating system for modern clinics.
+            Healthcare operations, engineered properly.
           </h1>
-          <p className="mx-auto mt-3.5 sm:mt-6 max-w-xl text-pretty text-base sm:text-lg text-muted-foreground">
-            Scheduling, charting, billing, and telehealth — unified in one
-            HIPAA-compliant workspace, built by clinicians for clinical teams.
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-pretty text-base sm:text-lg text-muted-foreground leading-relaxed">
+            Code201 works alongside ambitious healthcare teams to build CRMs,
+            automation, analytics and AI systems that reduce operational chaos
+            and revenue leakage.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-            <a href="/#pricing">
-              <Button size="lg" className="h-10 sm:h-11 px-4 sm:px-6 text-sm sm:text-base">Start free trial</Button>
-            </a>
-            <a href="/#features">
+            <Link href="/contact">
+              <Button size="lg" className="h-10 sm:h-11 px-5 sm:px-7 text-sm sm:text-base font-medium">
+                Book a discovery call
+              </Button>
+            </Link>
+            <Link href="/case-studies">
               <Button size="lg" variant="ghost" className="h-10 sm:h-11 px-4 sm:px-6 text-sm sm:text-base">
-                Book a demo
+                See our work
                 <ArrowRight className="h-4 w-4 ml-1" />
               </Button>
-            </a>
+            </Link>
           </div>
-          <div className="mt-5 sm:mt-8 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-            <TrustChip icon={ShieldCheck} label="HIPAA compliant" />
-            <TrustChip icon={FileCheck2} label="SOC 2 Type II" />
-            <TrustChip icon={Stethoscope} label="ONC certified" />
+          <div className="mt-6 sm:mt-9 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <TrustChip icon={ShieldCheck} label="HIPAA Architecture" />
+            <TrustChip icon={FileCheck2} label="Signed BAA Guarantee" />
+            <TrustChip icon={Activity} label="HL7 / FHIR Native" />
+            <TrustChip icon={Stethoscope} label="EHR Agnostic" />
           </div>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
-            Free 14-day trial · No credit card required
+          <p className="mt-3.5 sm:mt-4 text-xs sm:text-sm text-muted-foreground font-mono">
+            Forward-Deployed Teams · Custom Architecture · Zero Vendor Lock-in
           </p>
         </div>
       </div>
@@ -163,7 +164,7 @@ function HeroCallVisual() {
       <div className="relative h-[310px] sm:h-[460px] md:h-[500px] w-[88%] sm:w-[82%] md:w-[78%] ml-auto overflow-hidden rounded-2xl sm:rounded-3xl border border-border/80 bg-card shadow-2xl">
         <Image
           src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80"
-          alt="Patient on call with Code201 Concierge AI"
+          alt="Patient intake automation visual"
           fill
           priority
           sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 100vw"
@@ -181,7 +182,7 @@ function HeroCallVisual() {
         <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
           <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-foreground mb-1 sm:mb-1.5" />
           <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
-            Hello, Rebecca! How can we help you today?
+            Hello! How can we assist your appointment scheduling today?
           </p>
         </div>
       </div>
@@ -191,7 +192,7 @@ function HeroCallVisual() {
         <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
           <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-muted-foreground mb-1 sm:mb-1.5" />
           <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
-            I had a question about a balance on my account.
+            I need to update my insurance details before my appointment.
           </p>
         </div>
       </div>
@@ -204,7 +205,7 @@ function HeroCallVisual() {
         <div className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/95 p-2.5 sm:p-4 shadow-2xl backdrop-blur text-left">
           <AudioWaveform className="h-2.5 sm:h-3 w-10 sm:w-14 text-foreground mb-1 sm:mb-1.5" />
           <p className="text-[11px] sm:text-sm font-medium text-foreground leading-snug">
-            I see there's a $38 charge from January 11th. Let me investigate.
+            Verified and synced into your EHR chart. You are all set.
           </p>
         </div>
       </div>
@@ -215,7 +216,7 @@ function HeroCallVisual() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground opacity-50"></span>
           <span className="relative inline-flex h-2 w-2 rounded-full bg-foreground"></span>
         </span>
-        <span>24/7 EHR Sync</span>
+        <span>Bi-directional EHR Sync</span>
       </div>
 
       {/* Floating Intake Action Badge (Extends Outside Bottom Right Image Border) */}
@@ -224,64 +225,68 @@ function HeroCallVisual() {
           <CircleCheck className="h-4 w-4" />
         </div>
         <div className="text-left text-xs">
-          <p className="font-semibold text-foreground">Appointment Booked</p>
-          <p className="text-[11px] text-muted-foreground font-mono">Tuesday • 9:30 AM</p>
+          <p className="font-semibold text-foreground">Workflow Action Complete</p>
+          <p className="text-[11px] text-muted-foreground font-mono">Real-time EHR Telemetry</p>
         </div>
       </div>
     </div>
   );
 }
 
-// ---- Proven at scale (clinical outcome metrics + practice logos) ----
+// ---- Engineering Architecture & Capabilities Pillars ----
 
-const outcomes = [
-  { value: "70%", label: "less documentation time" },
-  { value: "2.1 hrs", label: "returned to clinical care, daily" },
-  { value: "98.2%", label: "first-pass claim acceptance" },
-  { value: "40+", label: "specialties supported" },
+const engineeringPillars = [
+  { title: "Bi-Directional EHR Sync", description: "Real-time HL7/FHIR pipeline integration with major health records" },
+  { title: "Zero Vendor Lock-In", description: "Modular codebases, open standards & fully exportable data schemas" },
+  { title: "HIPAA Security", description: "Granular audit logging, role-based access & AES-256 encryption" },
+  { title: "Production Telemetry", description: "Continuous system telemetry, error monitoring & latency alerting" },
 ];
 
-const clinics = [
-  "Bayview Family Health",
-  "Herrera Pediatrics",
-  "Presidio Internal Medicine",
-  "Mission Cardiology",
-  "Northgate Orthopedics",
-  "Cedar Women's Health",
+const deploymentEnvironments = [
+  "Multi-Specialty MSOs",
+  "High-Volume Ambulatory Networks",
+  "Enterprise Health Systems",
+  "Specialty Practice Groups",
+  "Clinical AI Platforms",
 ];
 
 export function ProvenAtScale() {
   return (
-    <section className="border-b border-border bg-background py-8">
+    <section className="border-b border-border bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Proven at scale
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Engineering Architecture Standards
         </p>
 
-        <Reveal className="mx-auto mt-5 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-6 lg:grid-cols-4">
-          {outcomes.map((outcome, idx) => (
-            <Reveal key={outcome.label} delay={idx * 60} className="text-center">
-              <p className="text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-                {outcome.value}
+        <Reveal className="mx-auto mt-6 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {engineeringPillars.map((pillar, idx) => (
+            <Reveal key={pillar.title} delay={idx * 60} className="rounded-xl border border-border bg-card p-4 text-left shadow-sm">
+              <p className="text-base font-semibold tracking-tight text-foreground">
+                {pillar.title}
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {outcome.label}
+              <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                {pillar.description}
               </p>
             </Reveal>
           ))}
         </Reveal>
 
-        <Reveal className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-border pt-5">
-          {clinics.map((name) => (
-            <span
-              key={name}
-              className="flex items-center gap-2 text-sm font-semibold tracking-tight text-muted-foreground/80"
-            >
-              <Activity className="h-3.5 w-3.5" />
-              {name}
-            </span>
-          ))}
-        </Reveal>
+        <div className="mt-8 pt-6 border-t border-border/80 text-center">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/70 mb-3">
+            TARGET DEPLOYMENT ENVIRONMENTS & ARCHITECTURE INTEGRATIONS
+          </p>
+          <Reveal className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {deploymentEnvironments.map((name) => (
+              <span
+                key={name}
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-foreground/80"
+              >
+                <Activity className="h-3.5 w-3.5 text-accent" />
+                {name}
+              </span>
+            ))}
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -363,7 +368,7 @@ function BillingVisual() {
         <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
           <p className="text-sm font-semibold text-foreground">Claim Pipeline</p>
           <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
-            98.2% First-Pass Rate
+            Real-Time Claim Telemetry
           </span>
         </div>
       </div>
@@ -577,50 +582,50 @@ export function FeatureSections() {
   );
 }
 
-// ---- Patient Call Workflow Scroll Timeline Stepper ----
+// ---- Forward-Deployed Engineering Methodology Timeline ----
 
 const workflowSteps = [
   {
-    step: "Step 1",
-    title: "Call Answered, Instantly.",
+    step: "Phase 1",
+    title: "Operational & Data Architecture Audit",
     description:
-      "The Concierge agent answers the patient’s call immediately to help the patient schedule an appointment.",
-    icon: PhoneCall,
-  },
-  {
-    step: "Step 2",
-    title: "Patient Information Captured.",
-    description:
-      "The agent asks the right questions to capture necessary patient information, pulls up their chart, and writes new information directly into the EHR.",
+      "We embed with your ops team to audit existing data schemas, EHR API endpoints, manual bottlenecks, and revenue leakage points.",
     icon: Search,
   },
   {
-    step: "Step 3",
-    title: "Request Detected & Understood.",
+    step: "Phase 2",
+    title: "Custom System & Governance Architecture",
     description:
-      "The agent identifies the request to schedule an appointment and refill a prescription, and prepares to handle both in a single conversation.",
+      "We architect tailored CRMs, automated patient pipelines, or AI engines with strict HIPAA boundaries and data security controls.",
+    icon: ShieldCheck,
+  },
+  {
+    step: "Phase 3",
+    title: "Rapid Engineering Sprint",
+    description:
+      "Our forward-deployed engineers build custom software modules, ambient tools, and background automation engines built for your exact workflow.",
     icon: Sparkles,
   },
   {
-    step: "Step 4",
-    title: "Appointment Booked.",
+    step: "Phase 4",
+    title: "EHR Interoperability & Sandbox Testing",
     description:
-      "Concierge checks real-time availability, applies specialty-specific scheduling logic and provider rules, and books the appointment directly in the EHR.",
-    icon: CalendarCheck,
+      "We connect systems directly into your existing EHR (Epic, Athena, Cerner, Elation) using HL7/FHIR APIs and validate in live sandboxes.",
+    icon: RefreshCw,
   },
   {
-    step: "Step 5",
-    title: "Prescription Refill Submitted",
+    step: "Phase 5",
+    title: "Provider-Supervised Production Rollout",
     description:
-      "The agent generates an EHR-native task for the provider to review and action the prescription refill. No staff involvement required.",
-    icon: Pill,
+      "Systems go live with clinician-in-the-loop guardrails, 1-click authorization flows, and complete audit logging for full operational trust.",
+    icon: CircleCheck,
   },
   {
-    step: "Step 6",
-    title: "Appointment Confirmed, Loop Closed.",
+    step: "Phase 6",
+    title: "Continuous Telemetry & Revenue Telemetry",
     description:
-      "The patient receives an immediate text confirmation for the appointment. The refill task is queued in the EHR, and ready for the team to action.",
-    icon: MessageSquareText,
+      "We monitor production telemetry 24/7, tracking system latency, throughput, and prevented revenue leakage as your practice expands.",
+    icon: Activity,
   },
 ];
 
@@ -677,15 +682,13 @@ export function HowItWorks() {
         {/* Header */}
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/70">
-            HOW IT WORKS
+            OUR ENGINEERING METHODOLOGY
           </p>
           <h2 className="mt-3 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Here's What Happens When Patients Call into Your Practice.
+            How Code201 Deploys With Your Healthcare Organization.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg">
-            One call. Multiple needs. No hold time. No staff required. See how
-            Code201's Concierge AI agent handles the full interaction from first
-            ring to EHR sync.
+            From initial operational audit to live EHR integration, our engineers work alongside your clinical and ops leaders to ship custom production systems in weeks.
           </p>
         </div>
 
@@ -765,6 +768,112 @@ export function HowItWorks() {
   );
 }
 
+// ---- Three Problems Code201 Solves ----
+
+const threeProblems = [
+  {
+    title: "1. Operational Chaos & Fragmented Tools",
+    friction: "Patient inquiries, scheduling, intake forms, and follow-ups are scattered across disconnected software, spreadsheets, and manual phone queues.",
+    solution: "We build custom healthcare CRMs and automated patient pipelines tailored specifically to your practice's exact operational workflow.",
+    tag: "CUSTOM HEALTHCARE CRM",
+    icon: Building2,
+  },
+  {
+    title: "2. Revenue Leakage & Billing Friction",
+    friction: "Untracked patient balances, missed CPT codes, unbilled procedures, and delayed claim submissions quietly drain practice margins.",
+    solution: "We engineer real-time revenue telemetry and pre-submission charge validation engines that catch leakage before claims leave the building.",
+    tag: "REVENUE TELEMETRY ENGINE",
+    icon: DollarSign,
+  },
+  {
+    title: "3. EHR Rigidity & Manual Overhead",
+    friction: "Standard off-the-shelf EHRs force clinical and front-desk teams into clunky, repetitive manual data entry, creating burnout and error risks.",
+    solution: "We build bi-directional HL7/FHIR connectors and clinician-in-the-loop AI overlays that sync directly with your EHR without replacing it.",
+    tag: "EHR INTEROPERABILITY OVERLAY",
+    icon: Stethoscope,
+  },
+];
+
+export function ThreeProblems() {
+  return (
+    <section id="solutions" className="border-b border-border bg-background py-16 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            THE THREE OPERATIONAL BOTTLENECKS WE ELIMINATE
+          </p>
+          <h2 className="mt-3 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Three Problems Code201 Solves
+          </h2>
+          <p className="mt-4 text-pretty text-base text-muted-foreground sm:text-lg">
+            Healthcare teams struggle with fragmented software, revenue leakage, and rigid off-the-shelf EHRs. We build forward-deployed systems to solve each.
+          </p>
+        </div>
+
+        {/* 3-Column Problem & Solution Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {threeProblems.map((prob, idx) => {
+            const Icon = prob.icon;
+            return (
+              <Reveal
+                key={prob.title}
+                delay={idx * 80}
+                className="flex flex-col justify-between rounded-3xl border border-border bg-card p-7 shadow-sm transition-all hover:border-accent/40 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-accent border border-accent/30 bg-accent/5 rounded px-2.5 py-1">
+                      {prob.tag}
+                    </span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                      <Icon className="h-4.5 w-4.5" />
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                    {prob.title}
+                  </h3>
+
+                  <div className="mt-4 space-y-3">
+                    <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-3.5">
+                      <p className="text-xs font-mono uppercase tracking-wider text-destructive font-semibold mb-1">
+                        THE FRICTION
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {prob.friction}
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-accent/30 bg-accent/5 p-3.5">
+                      <p className="text-xs font-mono uppercase tracking-wider text-accent font-semibold mb-1">
+                        HOW CODE201 SOLVES IT
+                      </p>
+                      <p className="text-xs text-foreground font-medium leading-relaxed">
+                        {prob.solution}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 border-t border-border/60 pt-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline"
+                  >
+                    Discuss your workflow bottleneck
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ---- Platform Solutions (Strict Monochrome Asymmetric Tiled Grid) ----
 
 export function Solutions() {
@@ -781,13 +890,13 @@ export function Solutions() {
               Platform solutions
             </h2>
           </div>
-          <a
-            href="#pricing"
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
           >
             Explore all solutions
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
 
         {/* 3-Column Tiled Grid (Strict Black & White / Monochrome) */}
@@ -847,10 +956,10 @@ export function Solutions() {
               <div className="space-y-2 text-xs">
                 <div className="rounded-xl border border-border bg-muted/40 p-2.5 text-foreground">
                   <p className="font-mono text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Code201 AI</p>
-                  "Dr. Osei has an opening Tuesday at 9:15 AM. Shall I confirm?"
+                  &ldquo;Dr. Osei has an opening Tuesday at 9:15 AM. Shall I confirm?&rdquo;
                 </div>
                 <div className="rounded-xl border border-border bg-card p-2.5 text-foreground ml-4 text-right">
-                  "Yes please, Tuesday works great!"
+                  &ldquo;Yes please, Tuesday works great!&rdquo;
                 </div>
                 <div className="rounded-xl border border-border bg-foreground text-background p-2 text-[11px] font-mono font-medium text-center">
                   ✓ EHR Calendar Synced
@@ -1030,28 +1139,20 @@ export function Integrations() {
 
 // ---- Testimonials: one big pull quote + supporting cards ----
 
-// ---- Testimonials: 3-column client layout with left rating badge & quote cards ----
+// ---- Engineering Commitments & Client Collaboration ----
 
-const clientTestimonials = [
+const engineeringPrinciples = [
   {
-    quote:
-      "We went from three disconnected systems to one. Our front desk closes the books 90 minutes earlier every day, and claim denials have dropped noticeably.",
-    name: "Dr. Amara Osei, MD",
-    title: "Medical Director",
-    clinic: "Bayview Family Health",
-    avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80",
-    rating: "5.0",
-    clinicLogo: "BAYVIEW HEALTH",
+    title: "Embedded Engineering Collaboration",
+    description:
+      "We don't hand off documentation and leave. Our forward-deployed engineers embed directly with your operational team to understand data structures and clinical requirements before writing code.",
+    tag: "FORWARD-DEPLOYED",
   },
   {
-    quote:
-      "No-shows are down about 40% since we switched. The scheduling and automated reminder flows alone paid for our subscription.",
-    name: "Dr. Luis Herrera, DO",
-    title: "Owner & Lead Physician",
-    clinic: "Herrera Pediatrics",
-    avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80",
-    rating: "5.0",
-    clinicLogo: "HERRERA PEDIATRICS",
+    title: "Open Standards & System Control",
+    description:
+      "We build modular healthcare platforms using open standards (HL7/FHIR, REST APIs) so your organization maintains 100% ownership and control of its codebase and data architecture.",
+    tag: "ZERO VENDOR LOCK-IN",
   },
 ];
 
@@ -1063,101 +1164,66 @@ export function Testimonials() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-12 sm:mb-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-              TESTIMONIALS
+              OUR ENGINEERING COMMITMENT
             </p>
             <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              What our clients say
+              How We Build With Healthcare Partners
             </h2>
           </div>
-          <a
-            href="#pricing"
+          <Link
+            href="/case-studies"
             className="inline-flex items-center gap-1 text-sm font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
           >
-            All testimonials (61)
-          </a>
+            View Deployment Studies
+            <ArrowRight className="h-4 w-4 ml-1" />
+          </Link>
         </div>
 
         {/* 3-Column Grid Layout */}
         <div className="grid gap-8 lg:grid-cols-3 items-stretch">
-          {/* Left Column: Summary & Rating Trust Badge */}
+          {/* Left Column: Summary */}
           <Reveal className="flex flex-col justify-between space-y-8 pr-2">
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Clinical teams trust Code201 because we treat their practice workflow like our own. We focus on clinical outcomes, reducing administrative burden so providers can focus on care.
+              Ambitious healthcare leaders partner with Code201 to eliminate operational chaos and revenue leakage through dedicated, forward-deployed engineering.
             </p>
 
-            {/* Rating trust badge */}
             <div className="pt-6 border-t border-border/60">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                REVIEWED ON
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-foreground">
+                COLLABORATIVE ENGAGEMENT
               </p>
-              <div className="mt-2 flex items-center gap-2">
-                <span className="text-xl font-bold text-foreground">5.0</span>
-                <div className="flex items-center text-accent">
-                  <Star className="h-4 w-4 fill-accent text-accent" />
-                  <Star className="h-4 w-4 fill-accent text-accent" />
-                  <Star className="h-4 w-4 fill-accent text-accent" />
-                  <Star className="h-4 w-4 fill-accent text-accent" />
-                  <Star className="h-4 w-4 fill-accent text-accent" />
-                </div>
-              </div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                120+ VERIFIED CLINICAL REVIEWS
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                Every system is custom-architected, security-reviewed, and deployed directly alongside your technical and clinical leadership.
               </p>
             </div>
           </Reveal>
 
-          {/* Middle & Right Columns: Testimonial Cards */}
-          {clientTestimonials.map((t, idx) => (
+          {/* Middle & Right Columns: Principle Cards */}
+          {engineeringPrinciples.map((p, idx) => (
             <Reveal
-              key={t.name}
+              key={p.title}
               delay={idx * 90}
               className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-all hover:border-accent/40"
             >
               <div>
-                {/* Red/Accent Quote Mark Icon */}
-                <div className="mb-4 text-accent">
-                  <Quote className="h-8 w-8 fill-accent/15 stroke-accent" />
-                </div>
+                <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-accent border border-accent/30 bg-accent/5 rounded px-2.5 py-1">
+                  {p.tag}
+                </span>
 
-                {/* Quote Text */}
-                <p className="text-base leading-relaxed text-foreground/90">
-                  &ldquo;{t.quote}&rdquo;
+                <h3 className="mt-6 text-xl font-semibold text-foreground">
+                  {p.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
                 </p>
-
-                {/* Author Info & Clinic Badge */}
-                <div className="mt-8 flex items-end justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      width={88}
-                      height={88}
-                      className="h-11 w-11 rounded-full object-cover border border-border"
-                    />
-                    <div>
-                      <p className="text-base font-semibold text-foreground">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {t.title}, {t.clinic}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/80 border border-border/80 rounded px-2 py-0.5">
-                    {t.clinicLogo}
-                  </span>
-                </div>
               </div>
 
-              {/* Bottom Footer inside Card */}
-              <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-xs">
-                <div className="flex items-center gap-1 font-semibold text-foreground">
-                  <span>{t.rating}</span>
-                  <Star className="h-3.5 w-3.5 fill-accent text-accent" />
-                </div>
+              <div className="mt-8 border-t border-border/60 pt-4 text-xs">
                 <Link
-                  href="/case-studies"
+                  href="/contact"
                   className="flex items-center gap-1.5 font-medium text-accent hover:underline"
                 >
-                  Read case study
+                  Discuss your architecture
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
@@ -1174,31 +1240,31 @@ export function Testimonials() {
 const securityCards = [
   {
     icon: ShieldCheck,
-    title: "HIPAA & signed BAAs",
+    title: "HIPAA & Signed BAAs",
     description:
-      "Encryption in transit and at rest, with a signed Business Associate Agreement for every organization.",
+      "Encryption in transit and at rest, with a signed Business Associate Agreement executed for every client organization.",
   },
   {
     icon: FileCheck2,
-    title: "SOC 2 Type II",
+    title: "Continuous Audit Logging",
     description:
-      "Independently audited security controls, renewed annually and monitored continuously.",
+      "Immutable access logging for every API transaction, chart view, and data sync event across your infrastructure.",
   },
   {
     icon: KeyRound,
-    title: "Role-based access",
+    title: "Role-Based Access Control",
     description:
-      "Granular permissions by role and location, with a full audit trail on every chart view.",
+      "Granular permission scoping by provider role, location, and system component to prevent unauthorized data exposure.",
   },
   {
     icon: RefreshCw,
-    title: "Configurable retention",
+    title: "AES-256 Data Isolation",
     description:
-      "Data retention policies tuned to your governance requirements, exportable anytime.",
+      "Data retention policies tuned to your governance requirements with dedicated tenant encryption key management.",
   },
 ];
 
-const complianceBadges = ["HIPAA", "SOC 2 TYPE II", "ONC CERTIFIED", "HL7 / FHIR"];
+const complianceBadges = ["HIPAA SAFEGUARDS", "HL7 / FHIR NATIVE", "AES-256 ENCRYPTION", "SIGNED BAA GUARANTEE"];
 
 export function Security() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -1344,48 +1410,50 @@ export function Security() {
 
 // ---- Pricing ----
 
+// ---- Engagement Models ----
+
 const tiers = [
   {
-    name: "Essentials",
-    price: "$199",
-    description: "For solo providers getting started.",
+    name: "Focused Sprint",
+    price: "Custom Scope",
+    description: "Targeted engineering sprint for a specific operational bottleneck or AI integration.",
     features: [
-      "Full EHR & charting",
-      "Online scheduling & reminders",
-      "e-Prescribing",
-      "Patient portal",
-      "Email support",
+      "Custom AI intake or EHR connector build",
+      "HL7/FHIR endpoint development",
+      "HIPAA security & audit log architecture",
+      "Sandbox testing & provider UAT",
+      "Dedicated post-launch engineering support",
     ],
-    cta: "Start free trial",
+    cta: "Discuss Project Scope",
     highlighted: false,
   },
   {
-    name: "Professional",
-    price: "$399",
-    description: "For growing practices and multi-provider clinics.",
+    name: "Forward-Deployed Team",
+    price: "Custom Engagement",
+    description: "Embedded engineering team building end-to-end custom CRMs, analytics & operational engines.",
     features: [
-      "Everything in Essentials",
-      "Integrated medical billing & RCM",
-      "Telehealth visits",
-      "Eligibility & denial workflows",
-      "Advanced analytics & custom reports",
-      "Priority support with dedicated onboarding",
+      "Dedicated forward-deployed engineers & tech lead",
+      "Custom healthcare CRM & patient pipeline engine",
+      "Real-time revenue telemetry & RCM analytics",
+      "Bidirectional EHR integration (Epic / Athena / Cerner)",
+      "Custom provider dashboard & workflow UI",
+      "HIPAA compliance framework & signed BAA",
     ],
-    cta: "Start free trial",
+    cta: "Request Engagement Scope",
     highlighted: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    description: "For groups, MSOs, and health systems.",
+    name: "Enterprise Architecture",
+    price: "Enterprise Partner",
+    description: "Long-term technical partnership for multi-site MSOs and health systems.",
     features: [
-      "Everything in Professional",
-      "HL7/FHIR integrations & API access",
-      "SSO & advanced role controls",
-      "Dedicated success manager",
-      "99.9% uptime SLA",
+      "Multi-practice infrastructure & multi-tenant engine",
+      "Dedicated 24/7 engineering SLA & telemetry monitoring",
+      "Custom AI workflow orchestration & local tuning",
+      "Continuous system scaling & performance optimization",
+      "Executive architecture reviews & advisory",
     ],
-    cta: "Talk to sales",
+    cta: "Contact Engineering Leads",
     highlighted: false,
   },
 ];
@@ -1394,67 +1462,67 @@ export function Pricing() {
   return (
     <section
       id="pricing"
-      className="border-t border-border bg-background py-12 lg:py-16"
+      className="border-t border-border bg-background py-16 lg:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Pricing
+            ENGAGEMENT MODELS
           </p>
           <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-            Simple pricing per provider
+            Transparent Engineering Partnerships
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Unlimited patients, unlimited claims, and free data migration on
-            every plan. Billed annually.
+            We structure forward-deployed engineering engagements around measurable operational outcomes, custom scope, and production reliability.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {tiers.map((tier, idx) => (
             <Reveal key={tier.name} delay={idx * 80}>
             <Card
               className={
                 tier.highlighted
-                  ? "relative border-foreground shadow-lg ring-1 ring-foreground"
-                  : undefined
+                  ? "relative border-foreground shadow-lg ring-1 ring-foreground h-full flex flex-col justify-between"
+                  : "h-full flex flex-col justify-between"
               }
             >
               {tier.highlighted ? (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-button bg-foreground px-3 py-1 text-xs font-medium text-background">
-                  Most popular
+                  Recommended Engagement
                 </span>
               ) : null}
-              <CardContent className="p-7">
-                <h3 className="font-semibold">{tier.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {tier.description}
-                </p>
-                <p className="mt-5">
-                  <span className="text-4xl font-medium tracking-tight">
-                    {tier.price}
-                  </span>
-                  {tier.price !== "Custom" ? (
-                    <span className="text-sm text-muted-foreground"> /mo</span>
-                  ) : null}
-                </p>
-                <ul className="mt-5 space-y-2.5">
-                  {tier.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
-                    >
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  className="mt-6 w-full"
-                  variant={tier.highlighted ? "default" : "outline"}
-                >
-                  {tier.cta}
-                </Button>
+              <CardContent className="p-7 flex flex-col justify-between flex-1">
+                <div>
+                  <h3 className="font-semibold text-lg text-foreground">{tier.name}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground min-h-[36px]">
+                    {tier.description}
+                  </p>
+                  <div className="mt-4 pb-4 border-b border-border/60">
+                    <span className="text-2xl font-bold tracking-tight text-foreground">
+                      {tier.price}
+                    </span>
+                  </div>
+                  <ul className="mt-5 space-y-2.5">
+                    {tier.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                      >
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <a href="/contact" className="mt-8 block w-full">
+                  <Button
+                    className="w-full"
+                    variant={tier.highlighted ? "default" : "outline"}
+                  >
+                    {tier.cta}
+                  </Button>
+                </a>
               </CardContent>
             </Card>
             </Reveal>
@@ -1470,23 +1538,23 @@ export function Pricing() {
 const faqs = [
   {
     q: "Is Code201 HIPAA compliant?",
-    a: "Yes. All data is encrypted in transit and at rest, access is role-based and fully audited, and we sign BAAs with every customer. Code201 is SOC 2 Type II audited and ONC certified.",
+    a: "Yes. All clinical data is encrypted in transit (TLS 1.3) and at rest (AES-256), access is role-based and audited, and we execute signed Business Associate Agreements (BAAs) with every client.",
   },
   {
-    q: "Can you migrate data from our current EHR?",
-    a: "Yes — migration from all major EHR and practice-management systems is included in every plan. Our onboarding team moves patients, schedules, and billing history with you validating at each step.",
+    q: "How do you connect with existing EHR systems?",
+    a: "We integrate directly with your existing EHR system (Epic, AthenaHealth, Cerner, Elation, etc.) using HL7/FHIR APIs and custom bi-directional data connectors.",
   },
   {
-    q: "Do you support our specialty?",
-    a: "Code201 ships with templates for 30+ specialties including family medicine, pediatrics, internal medicine, cardiology, and orthopedics, plus a template builder for custom workflows.",
+    q: "What medical specialties or practice types do you support?",
+    a: "Code201 builds custom systems for ambulatory groups, MSOs, specialty practices, and health systems across primary care, cardiology, pediatrics, orthopedics, and more.",
   },
   {
-    q: "How does coding assistance work?",
-    a: "E/M levels and ICD-10 codes are suggested directly from the clinical documentation, then confirmed by your coders before submission — every final decision stays with your team.",
+    q: "How does provider supervision work for AI workflows?",
+    a: "All AI workflow actions — such as intake drafts, chart notes, or task pre-population — require 1-click provider or staff authorization before committing to the chart.",
   },
   {
-    q: "What does billing support look like?",
-    a: "Professional and Enterprise plans include claim scrubbing, eligibility checks, denial management workflows, and same-day support from our US-based revenue cycle team.",
+    q: "What does an engineering engagement look like?",
+    a: "Our forward-deployed engineers embed directly with your operational leads to audit requirements, build custom components, run sandbox testing, and provide ongoing telemetry support.",
   },
 ];
 
@@ -1585,7 +1653,7 @@ export function BottomCta() {
       <div className="absolute inset-0 z-0">
         <Image
           src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2000&q=80"
-          alt="Clinical team background"
+          alt="Clinical engineering background"
           fill
           sizes="100vw"
           className="object-cover object-center opacity-10 blur-[1px]"
@@ -1595,20 +1663,19 @@ export function BottomCta() {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center sm:px-6">
         <EcgLine className="h-10 w-full max-w-2xl text-accent/40" />
         <h2 className="max-w-3xl text-balance text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Give your clinic its heartbeat back.
+          Engineer your healthcare operations properly.
         </h2>
         <p className="max-w-xl text-muted-foreground">
-          Join 14,000+ providers running their practices on one clinical
-          platform. Set up in days, not months.
+          Partner with Code201 forward-deployed engineers to build custom, reliable operational systems and AI pipelines.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <a href="#pricing">
-            <Button size="lg">Start free trial</Button>
+          <a href="/contact">
+            <Button size="lg">Book Engineering Consultation</Button>
           </a>
-          <a href="#pricing">
+          <a href="#features">
             <Button size="lg" variant="ghost">
-              Book a demo
-              <ArrowRight />
+              Explore Capabilities
+              <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
           </a>
         </div>
@@ -1636,7 +1703,7 @@ export function RoiCalculator() {
             PRACTICE ROI CALCULATOR
           </p>
           <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Calculate your clinic's monthly staff & time savings
+            Calculate your clinic&apos;s monthly staff & time savings
           </h2>
           <p className="mt-3 text-base text-muted-foreground sm:text-lg">
             See how much front-desk capacity and recovered appointment revenue Code201 brings to your practice.
@@ -1648,42 +1715,62 @@ export function RoiCalculator() {
           <div className="space-y-8">
             <div>
               <div className="flex justify-between items-center mb-3">
-                <label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                  <UserRound className="h-4 w-4 text-accent" />
+                <label htmlFor="roi-providers-input" className="text-sm font-semibold text-foreground flex items-center gap-2 cursor-pointer">
+                  <UserRound className="h-4 w-4 text-accent" aria-hidden="true" />
                   Number of Providers
                 </label>
-                <span className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button">
+                <span
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button"
+                >
                   {providers} {providers === 1 ? "Provider" : "Providers"}
                 </span>
               </div>
               <input
+                id="roi-providers-input"
                 type="range"
                 min="1"
                 max="50"
                 value={providers}
                 onChange={(e) => setProviders(Number(e.target.value))}
-                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent"
+                aria-label="Number of Providers"
+                aria-valuemin={1}
+                aria-valuemax={50}
+                aria-valuenow={providers}
+                aria-valuetext={`${providers} ${providers === 1 ? "Provider" : "Providers"}`}
+                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
             </div>
 
             <div>
               <div className="flex justify-between items-center mb-3">
-                <label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                  <PhoneCall className="h-4 w-4 text-accent" />
+                <label htmlFor="roi-calls-input" className="text-sm font-semibold text-foreground flex items-center gap-2 cursor-pointer">
+                  <PhoneCall className="h-4 w-4 text-accent" aria-hidden="true" />
                   Daily Inbound Patient Calls
                 </label>
-                <span className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button">
+                <span
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="text-base font-bold text-foreground bg-muted px-3 py-1 rounded-button"
+                >
                   {dailyCalls} Calls/day
                 </span>
               </div>
               <input
+                id="roi-calls-input"
                 type="range"
                 min="25"
                 max="1000"
                 step="25"
                 value={dailyCalls}
                 onChange={(e) => setDailyCalls(Number(e.target.value))}
-                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent"
+                aria-label="Daily Inbound Patient Calls"
+                aria-valuemin={25}
+                aria-valuemax={1000}
+                aria-valuenow={dailyCalls}
+                aria-valuetext={`${dailyCalls} calls per day`}
+                className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
             </div>
           </div>
@@ -1692,30 +1779,30 @@ export function RoiCalculator() {
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 bg-muted/40 p-6 rounded-xl border border-border/80">
             <div className="flex items-center justify-between border-b border-border/60 pb-4">
               <div className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-accent" />
+                <Clock className="h-5 w-5 text-accent" aria-hidden="true" />
                 <div>
                   <p className="text-xs font-semibold text-muted-foreground uppercase">Staff Hours Saved</p>
-                  <p className="text-2xl font-bold text-foreground">{hoursSavedPerMonth} hrs/mo</p>
+                  <p className="text-2xl font-bold text-foreground" aria-live="polite">{hoursSavedPerMonth} hrs/mo</p>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between border-b border-border/60 pb-4">
               <div className="flex items-center gap-3">
-                <Activity className="h-5 w-5 text-emerald-500" />
+                <Activity className="h-5 w-5 text-emerald-500" aria-hidden="true" />
                 <div>
                   <p className="text-xs font-semibold text-muted-foreground uppercase">Hold Time Reduction</p>
-                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">-{holdTimeReduction}%</p>
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400" aria-live="polite">-{holdTimeReduction}%</p>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between pt-1">
               <div className="flex items-center gap-3">
-                <DollarSign className="h-5 w-5 text-accent" />
+                <DollarSign className="h-5 w-5 text-accent" aria-hidden="true" />
                 <div>
                   <p className="text-xs font-semibold text-muted-foreground uppercase">Estimated Monthly Revenue Recovered</p>
-                  <p className="text-2xl font-bold text-foreground">${revenueRecovered.toLocaleString()}/mo</p>
+                  <p className="text-2xl font-bold text-foreground" aria-live="polite">${revenueRecovered.toLocaleString()}/mo</p>
                 </div>
               </div>
             </div>
@@ -1781,18 +1868,23 @@ export function SpecialtyPresets() {
             Tuned to how your specialty actually practices
           </h2>
           <p className="mt-3 text-base text-muted-foreground sm:text-lg">
-            Pre-built intake rules, appointment duration logic, and triage protocols for 40+ specialties.
+            Pre-built intake rules, appointment duration logic, and triage protocols for major healthcare specialties.
           </p>
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div role="tablist" aria-label="Medical specialty presets" className="flex flex-wrap justify-center gap-2 mb-10">
           {specialtyData.map((s) => (
             <button
               key={s.id}
+              id={`tab-${s.id}`}
               type="button"
+              role="tab"
+              aria-selected={activeSpecialtyId === s.id}
+              aria-controls={`panel-${s.id}`}
+              tabIndex={activeSpecialtyId === s.id ? 0 : -1}
               onClick={() => setActiveSpecialtyId(s.id)}
-              className={`rounded-button px-4 py-2 text-sm font-medium transition-all ${
+              className={`rounded-button px-4 py-2 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 activeSpecialtyId === s.id
                   ? "bg-foreground text-background shadow-sm"
                   : "bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -1805,19 +1897,21 @@ export function SpecialtyPresets() {
 
         {/* Active Content Card */}
         <Reveal className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
-          <h3 className="text-2xl font-medium text-foreground tracking-tight sm:text-3xl">
-            {activeData.title}
-          </h3>
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {activeData.description}
-          </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            {activeData.features.map((feat) => (
-              <div key={feat} className="flex items-center gap-2 text-sm font-medium text-foreground bg-muted/40 p-3 rounded-xl border border-border/60">
-                <Check className="h-4 w-4 text-accent shrink-0" />
-                <span>{feat}</span>
-              </div>
-            ))}
+          <div id={`panel-${activeData.id}`} role="tabpanel" aria-labelledby={`tab-${activeData.id}`}>
+            <h3 className="text-2xl font-medium text-foreground tracking-tight sm:text-3xl">
+              {activeData.title}
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {activeData.description}
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {activeData.features.map((feat) => (
+                <div key={feat} className="flex items-center gap-2 text-sm font-medium text-foreground bg-muted/40 p-3 rounded-xl border border-border/60">
+                  <Check className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

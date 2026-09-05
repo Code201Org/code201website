@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Code201 — the operating system for modern clinics";
+export const alt = "Code201 — Healthcare operations, engineered properly";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -64,7 +64,7 @@ export default function OpengraphImage() {
             color: "rgba(237, 236, 236, 0.6)",
           }}
         >
-          The operating system for modern clinics
+          Healthcare operations, engineered properly
         </div>
 
         <div
@@ -76,7 +76,7 @@ export default function OpengraphImage() {
             letterSpacing: "0.2em",
           }}
         >
-          EHR · SCHEDULING · BILLING · TELEHEALTH
+          CRM · AUTOMATION · ANALYTICS · AI
         </div>
 
         {/* ECG trace */}
