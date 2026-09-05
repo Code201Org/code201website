@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { WhatsAppWidget } from "@/components/whatsapp-widget";
 
 import "./globals.css";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
+          <WhatsAppWidget />
         </ThemeProvider>
       </body>
     </html>
