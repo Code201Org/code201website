@@ -306,7 +306,7 @@ interface FeatureSection {
 function ScheduleVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="relative h-36 w-full overflow-hidden">
+      <div className="relative h-28 sm:h-36 w-full overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
           alt="Clinical reception and schedule management"
@@ -315,15 +315,15 @@ function ScheduleVisual() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-          <p className="text-sm font-semibold text-foreground">Bayview Family Health</p>
-          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+        <div className="absolute bottom-2 sm:bottom-3 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between">
+          <p className="text-xs sm:text-sm font-semibold text-foreground truncate max-w-[65%]">Bayview Family Health</p>
+          <span className="shrink-0 rounded-full border border-border bg-background/90 backdrop-blur px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-medium text-foreground">
             Live Schedule
           </span>
         </div>
       </div>
-      <div className="p-4 pt-1">
-        <div className="space-y-2">
+      <div className="p-3 sm:p-4 pt-1">
+        <div className="space-y-1.5 sm:space-y-2">
           {[
             ["08:00", "Henry Fitzgerald", "Dr. Okafor · Rm 2", "Completed"],
             ["09:30", "Thomas Brennan", "R. Goldstein · Rm 6", "In Progress"],
@@ -332,20 +332,20 @@ function ScheduleVisual() {
           ].map(([time, patient, provider, status]) => (
             <div
               key={patient as string}
-              className="flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-2 text-xs"
+              className="flex items-center gap-2 sm:gap-3 rounded-lg border border-border bg-background px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs"
             >
-              <span className="font-mono text-muted-foreground">{time}</span>
+              <span className="font-mono text-muted-foreground shrink-0">{time}</span>
               <span className="min-w-0 flex-1 truncate font-medium text-foreground">
                 {patient}
                 <span className="font-normal text-muted-foreground"> · {provider}</span>
               </span>
-              <span className="rounded-md border border-border bg-muted/40 px-2 py-0.5 text-[11px] font-mono font-medium text-foreground">
+              <span className="shrink-0 rounded-md border border-border bg-muted/40 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-medium text-foreground">
                 {status}
               </span>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">
+        <p className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs text-muted-foreground">
           Eligibility verified at booking · waitlist backfilled 2 slots this week
         </p>
       </div>
@@ -356,7 +356,7 @@ function ScheduleVisual() {
 function BillingVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="relative h-36 w-full overflow-hidden">
+      <div className="relative h-28 sm:h-36 w-full overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
           alt="Medical practice revenue cycle and billing management"
@@ -365,15 +365,15 @@ function BillingVisual() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-          <p className="text-sm font-semibold text-foreground">Claim Pipeline</p>
-          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+        <div className="absolute bottom-2 sm:bottom-3 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between">
+          <p className="text-xs sm:text-sm font-semibold text-foreground truncate max-w-[55%]">Claim Pipeline</p>
+          <span className="shrink-0 rounded-full border border-border bg-background/90 backdrop-blur px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-medium text-foreground">
             Real-Time Claim Telemetry
           </span>
         </div>
       </div>
-      <div className="p-4 pt-1">
-        <div className="grid grid-cols-3 gap-2 text-center">
+      <div className="p-3 sm:p-4 pt-1">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
           {[
             ["Submitted", "24"],
             ["Adjudicating", "9"],
@@ -381,34 +381,34 @@ function BillingVisual() {
           ].map(([label, value]) => (
             <div
               key={label as string}
-              className="rounded-lg border border-border bg-background p-2"
+              className="rounded-lg border border-border bg-background p-1.5 sm:p-2"
             >
-              <span className="rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-[10px] font-mono font-medium text-foreground">
+              <span className="inline-block truncate max-w-full rounded-md border border-border bg-muted/40 px-1 sm:px-1.5 py-0.5 text-[9px] sm:text-[10px] font-mono font-medium text-foreground">
                 {label}
               </span>
-              <p className="mt-1 text-base font-semibold text-foreground">{value}</p>
+              <p className="mt-0.5 sm:mt-1 text-sm sm:text-base font-semibold text-foreground">{value}</p>
             </div>
           ))}
         </div>
-        <div className="mt-3 space-y-2">
+        <div className="mt-2.5 sm:mt-3 space-y-1.5 sm:space-y-2">
           {[
             ["CLM-00837", "99213", "Margaret Chen", "$195.00", "Paid"],
             ["CLM-00832", "99214", "Aisha Okafor", "$150.00", "Pending"],
           ].map(([claim, cpt, patient, amount, status]) => (
             <div
               key={claim as string}
-              className="flex items-center gap-2.5 rounded-lg border border-border bg-background px-3 py-2 text-xs"
+              className="flex items-center gap-1.5 sm:gap-2.5 rounded-lg border border-border bg-background px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs"
             >
-              <span className="font-mono text-muted-foreground">{cpt}</span>
+              <span className="font-mono text-muted-foreground shrink-0">{cpt}</span>
               <span className="min-w-0 flex-1 truncate font-medium text-foreground">{patient}</span>
-              <span className="font-mono font-medium text-foreground">{amount}</span>
-              <span className="rounded-md border border-border bg-muted/40 px-2 py-0.5 text-[11px] font-mono font-medium text-foreground">
+              <span className="font-mono font-medium text-foreground shrink-0">{amount}</span>
+              <span className="shrink-0 rounded-md border border-border bg-muted/40 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-medium text-foreground">
                 {status}
               </span>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">
+        <p className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs text-muted-foreground">
           E/M levels suggested from documentation · ICD-10 mapping built in
         </p>
       </div>
@@ -419,7 +419,7 @@ function BillingVisual() {
 function ChartingVisual() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="relative h-36 w-full overflow-hidden">
+      <div className="relative h-28 sm:h-36 w-full overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=800&q=80"
           alt="Clinician creating SOAP charting note"
@@ -428,22 +428,22 @@ function ChartingVisual() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-          <p className="text-sm font-semibold text-foreground">Visit Note — Margaret Chen</p>
-          <span className="rounded-full border border-border bg-background/90 backdrop-blur px-2.5 py-0.5 text-xs font-mono font-medium text-foreground">
+        <div className="absolute bottom-2 sm:bottom-3 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between">
+          <p className="text-xs sm:text-sm font-semibold text-foreground truncate max-w-[70%]">Visit Note — Margaret Chen</p>
+          <span className="shrink-0 rounded-full border border-border bg-background/90 backdrop-blur px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-medium text-foreground">
             Signed
           </span>
         </div>
       </div>
-      <div className="p-4 pt-1">
-        <div className="space-y-2 rounded-lg border border-border bg-background p-3">
-          <p className="text-xs text-foreground">
+      <div className="p-3 sm:p-4 pt-1">
+        <div className="space-y-1.5 sm:space-y-2 rounded-lg border border-border bg-background p-2.5 sm:p-3">
+          <p className="text-[11px] sm:text-xs text-foreground">
             <span className="font-mono font-semibold text-foreground">Subjective:</span> Improved exercise tolerance. No chest pain or shortness of breath.
           </p>
-          <p className="text-xs text-foreground">
+          <p className="text-[11px] sm:text-xs text-foreground">
             <span className="font-mono font-semibold text-foreground">Assessment:</span> Atrial fibrillation (I48.91), rate-controlled. Hypertension (I10).
           </p>
-          <div className="flex items-center gap-2 rounded border border-border bg-muted/40 px-2.5 py-1.5 text-xs">
+          <div className="flex items-center gap-2 rounded border border-border bg-muted/40 px-2 sm:px-2.5 py-1 sm:py-1.5 text-[11px] sm:text-xs">
             <Pill className="h-3.5 w-3.5 shrink-0 text-foreground" />
             <span className="text-muted-foreground"><strong className="text-foreground">Rx:</strong> Metformin 500 mg PO BID sent to pharmacy</span>
           </div>
@@ -522,12 +522,12 @@ function FeatureSectionBlock({
   const { eyebrow, title, paragraphs, points, visual, flip } = section;
   return (
     <section
-      className={`border-b border-border/60 py-16 lg:py-24 ${
+      className={`border-b border-border/60 py-10 sm:py-16 lg:py-24 ${
         isAltBg ? "bg-muted/30" : "bg-background"
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid items-center gap-12 sm:gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-center gap-8 sm:gap-16 lg:grid-cols-2 lg:gap-20">
           <Reveal
             className={flip ? "lg:order-2" : undefined}
           >
