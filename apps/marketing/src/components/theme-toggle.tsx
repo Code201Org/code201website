@@ -19,10 +19,11 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
       aria-label="Toggle theme"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="border-transparent bg-transparent shadow-none hover:bg-muted text-foreground dark:border-border dark:bg-card dark:shadow-sm"
     >
       {mounted && resolvedTheme === "dark" ? <Sun /> : <Moon />}
     </Button>

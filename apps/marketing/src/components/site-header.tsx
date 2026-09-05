@@ -44,11 +44,11 @@ export function SiteHeader() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-8 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <AppLogo />
         </Link>
@@ -100,7 +100,7 @@ export function SiteHeader() {
           id="mobile-navigation-menu"
           role="region"
           aria-label="Mobile Navigation"
-          className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col bg-background/98 p-6 backdrop-blur md:hidden overflow-y-auto border-t border-border animate-in fade-in slide-in-from-top-2 duration-200"
+          className="fixed inset-x-0 top-16 bottom-0 h-[calc(100vh-4rem)] h-[calc(100dvh-4rem)] z-50 flex flex-col bg-background p-6 md:hidden overflow-y-auto border-t border-border shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
         >
           <nav aria-label="Mobile Navigation Links" className="flex flex-col gap-4">
             {links.map((link) => (

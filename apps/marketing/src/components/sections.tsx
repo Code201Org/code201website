@@ -41,7 +41,7 @@ import { Reveal } from "@/components/reveal";
 
 export function Hero() {
   return (
-    <section className="relative flex w-full flex-col bg-background">
+    <section className="relative flex w-full flex-col overflow-x-hidden bg-background">
       {/* Full window width landing hero banner */}
       <div className="relative flex min-h-0 sm:min-h-[calc(100vh-4rem)] sm:min-h-[calc(100svh-4rem)] w-full flex-col justify-center overflow-hidden border-b border-border">
         {/* Full-bleed background texture pattern */}
@@ -115,7 +115,7 @@ export function Hero() {
       </div>
 
       {/* Product visual area */}
-      <div className="relative w-full border-b border-border bg-muted/40 py-6 sm:py-16">
+      <div className="relative w-full overflow-hidden border-b border-border bg-muted/40 py-6 sm:py-16">
         <EcgLine className="mx-auto mb-4 sm:mb-8 h-8 sm:h-10 w-full max-w-5xl px-4 text-accent/50 sm:px-6" />
         <div className="mx-auto max-w-5xl px-2 sm:px-6">
           <HeroCallVisual />
